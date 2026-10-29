@@ -7,4 +7,6 @@ script = ExtResource("1_r2euh")
 fish_name = "Pescao"
 base_price = 100
 tint = Color(0.023256682, 0.528895, 0.7891211, 1)
+bite_time_avg = 1.65
+difficulty = 0.2
 metadata/_custom_type_script = "uid://dgr5yc2gpqj1b"

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bofdhtn0ulibe"]
 
 [ext_resource type="TileSet" uid="uid://cr3knhishg5yh" path="res://Tile_Sets/prueba_suelo1.tres" id="1_nskf2"]
-[ext_resource type="Texture2D" uid="uid://bffva5onlogda" path="res://Assets/background_prueba.jpg" id="2_ym7p0"]
+[ext_resource type="Texture2D" uid="uid://dgsn35xx4g6pm" path="res://Assets/Captura de pantalla 2026-10-28 235005.png" id="2_jtunb"]
 [ext_resource type="PackedScene" uid="uid://bjsf3q6hvbyji" path="res://Scenes/player.tscn" id="3_ym7p0"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_jtunb"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_oc63o"]
@@ -17,18 +17,20 @@ tile_set = ExtResource("1_nskf2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=495166678]
 z_index = -1
-position = Vector2(63, -140)
-scale = Vector2(1.146, 0.91385436)
-texture = ExtResource("2_ym7p0")
+position = Vector2(62, -18)
+scale = Vector2(1.3926729, 1.1105585)
+texture = ExtResource("2_jtunb")
 
 [node name="Player" parent="." unique_id=243586245 instance=ExtResource("3_ym7p0")]
+RPG_PRUEBA = null
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=967976215 node_paths=PackedStringArray("follow_target")]
 top_level = true
 script = ExtResource("4_jtunb")
 follow_mode = 2
 follow_target = NodePath("../Player")
-zoom = Vector2(3.09, 3.09)
+zoom = Vector2(2.68, 2.68)
 tween_resource = SubResource("Resource_kl732")
 follow_damping = true
+draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"

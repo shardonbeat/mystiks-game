@@ -4,5 +4,9 @@
 
 [resource]
 script = ExtResource("1_vstgk")
+bar_size_bonus = 7.0
+bar_accel = 390.0
+bar_drag = 0.3
+bar_gravity = 130.0
 bite_rate_mult = 1.5
 metadata/_custom_type_script = "uid://dtxvnr6551loc"

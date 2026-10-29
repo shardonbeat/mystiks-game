@@ -8,6 +8,8 @@
 [node name="Camera2D" type="Camera2D" parent="." unique_id=543521517]
 physics_interpolation_mode = 1
 top_level = true
+zoom = Vector2(2.68, 2.68)
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1845653003]
 process_priority = 300

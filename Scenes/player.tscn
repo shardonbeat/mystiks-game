@@ -1,22 +1,106 @@
 [gd_scene format=3 uid="uid://bjsf3q6hvbyji"]
 
-[ext_resource type="Script" uid="uid://cli7lm14oq1kh" path="res://Scenes/player.gd" id="1_cvnsp"]
-[ext_resource type="SpriteFrames" uid="uid://cy7xqwuc4hxt" path="res://Player/prueba_sprite_frame.tres" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cli7lm14oq1kh" path="res://Scenes/player.gd" id="1_vgqql"]
+[ext_resource type="PackedScene" uid="uid://yoddonddf6jg" path="res://Scenes/fishing_mini_game.tscn" id="2_fkybt"]
+[ext_resource type="Texture2D" uid="uid://b7h77x5i66owg" path="res://Assets/player-sheet.png" id="4_3smsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ced8g"]
 size = Vector2(20, 43)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_btcbx"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwnis"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k53q1"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhl08"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtle1"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ntmi"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(0, 128, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od3ui"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(80, 128, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00tjw"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(160, 128, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3vf3"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(240, 128, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apopc"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(320, 128, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6j8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btcbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwnis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k53q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhl08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtle1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ntmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od3ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00tjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3vf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apopc")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 6.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=243586245 node_paths=PackedStringArray("animation")]
 collision_layer = 2
-script = ExtResource("1_cvnsp")
+script = ExtResource("1_vgqql")
 animation = NodePath("AnimatedSprite2D")
+fishingMinigame = ExtResource("2_fkybt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496030370]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_ced8g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1420129945]
-sprite_frames = ExtResource("1_v0iea")
-animation = &"jump"
-frame = 3
-frame_progress = 0.8902201
+sprite_frames = SubResource("SpriteFrames_l6j8m")
+animation = &"run"
+frame_progress = 0.21752939

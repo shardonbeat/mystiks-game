@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bqcumdoqaie3c"]
+
+[ext_resource type="PackedScene" uid="uid://bofdhtn0ulibe" path="res://Scenes/prueba.tscn" id="1_52fb6"]
+[ext_resource type="Script" uid="uid://1d2435n4ac8o" path="res://Scenes/main_scene.gd" id="1_jv6wh"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6l7je"]
+
+[node name="main_scene" type="Node2D" unique_id=1128078412]
+script = ExtResource("1_jv6wh")
+zones = Array[PackedScene]([ExtResource("1_52fb6")])
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=543521517]
+physics_interpolation_mode = 1
+zoom = Vector2(2.68, 2.68)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1845653003]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_6l7je")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"

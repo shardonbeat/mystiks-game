@@ -74,11 +74,6 @@ func _update_input_bar(delta: float):
 		_bar_vel *= -0.35
 		
 	_set_catch_bar_visual()
-
-func _update_fish(delta: float):
-	_fish_pos += sin(_elapsed * 3.0 + _fish_seed) * 0.2 * delta
-	_fish_pos = clamp(_fish_pos, 0.0, 1.0)
-	_set_fish_visual()
 		
 func _physics_process(delta: float) -> void:
 	_elapsed += delta
@@ -99,7 +94,7 @@ func _physics_process(delta: float) -> void:
 				_fail("MUY LENTO.")
 		STATE.PLAY:
 			_update_input_bar(delta)
-			_update_fish(delta)
+			_update_fish_motion(delta)
 			
 			var fish_y := _fish_center_y()
 			var is_overlapping := fish_y >= catchBar.position.y \
@@ -112,6 +107,14 @@ func _physics_process(delta: float) -> void:
 			else:
 				var escape_mult = fish.escape_rate if fish and "escape_rate" in fish else 1.0
 				_progress_val -= BASE_SCAPE_DRAIN * escape_mult * delta
+			
+			_progress_val = clamp(_progress_val, 0.0, 100.0)
+			progressBar.value = _progress_val
+			
+			if _progress_val >= 100.0:
+				_win()
+			if _progress_val <= 0.0:
+				_fail("SE ESCAPO")
 		STATE.END:
 			pass
 			
@@ -122,7 +125,18 @@ func _prompt_hook():
 	
 	flash_node(catchArea, 0.12)
 	_punch_ui(root_ui, 1.05, 0.08)
+
+func _win():
+	_state = STATE.END
+	if burst:
+		burst.restart()
+		burst.emitting = true
+	_punch_ui(root_ui, 1.08, 0.15)
 	
+	await get_tree().create_timer(0.4).timeout
+	emit_signal("fishing_finished", true, fish, int(_treasure_val))
+	queue_free()
+
 func _fail(_why: String):
 	_state = STATE.END
 	print("ERROR: " + _why)
@@ -131,6 +145,7 @@ func _fail(_why: String):
 	
 	await get_tree().create_timer(0.2).timeout
 	emit_signal("fishing_finished", false, fish, 0)
+	queue_free()
 	
 func _on_hook():
 	_state = STATE.PLAY
@@ -189,6 +204,19 @@ func _set_fish_visual():
 	fishIcon.position.y = _fish_center_y() - fishIcon.size.y * fishIcon.scale.y * 0.5
 	if fish:
 		fishIcon.modulate = fish.tint
+		
+func _update_fish_motion(delta: float):
+	var d := fish.difficulty
+	match fish.pattern:
+		fish.MovePattern.SMOOTH:
+			var t = _elapsed + _fish_seed
+			var target = 0.5 + 0.35 * sin(t * 1.2) * 0.15 * sin(t * 2.7 + 1.3)
+			_fish_vel += (target - _fish_pos) * (2.2 + 2.0 * d)
+			_fish_vel += 0.84 - 0.2 * d
+			
+	_fish_pos += _fish_vel * delta * 0.45
+	_fish_pos = clamp(_fish_pos, 0.02, 0.98)
+	_set_fish_visual()
 
 func _punch_ui(node: Node, scale_to: float, time: float):
 	if not node: return
