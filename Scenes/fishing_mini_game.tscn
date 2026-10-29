@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://yoddonddf6jg"]
+
+[ext_resource type="Texture2D" uid="uid://ofum5vh68tfk" path="res://Assets/fish.png" id="1_d5xeh"]
+[ext_resource type="Script" uid="uid://dwlucdlfwcemu" path="res://Scenes/fishing_mini_game.gd" id="1_l4xvc"]
+[ext_resource type="Resource" uid="uid://bp3leoe3b1xbx" path="res://Fish/Pescao.tres" id="2_8pmrs"]
+[ext_resource type="Texture2D" uid="uid://bprp1tuwgdpk3" path="res://Assets/chest.png" id="2_qfikw"]
+[ext_resource type="Resource" uid="uid://dk5su6w7bglgt" path="res://Rod/Bamboo_Rod.tres" id="3_xtnyp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ced8g"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 102.931
+initial_velocity_min = 41.879997
+initial_velocity_max = 104.72
+gravity = Vector3(0, 98, 0)
+hue_variation_min = -0.35000002
+hue_variation_max = 0.23999996
+
+[node name="FishingMiniGame" type="CanvasLayer" unique_id=1691906764 node_paths=PackedStringArray("root_ui", "catchArea", "barTrack", "catchBar", "fishIcon", "treasureIcon", "progressBar", "labelFishName", "burst")]
+script = ExtResource("1_l4xvc")
+fish = ExtResource("2_8pmrs")
+rod = ExtResource("3_xtnyp")
+root_ui = NodePath("Control")
+catchArea = NodePath("Control/CatchArea")
+barTrack = NodePath("Control/CatchArea/barTrack")
+catchBar = NodePath("Control/CatchArea/catchBar")
+fishIcon = NodePath("Control/CatchArea/FishIcon")
+treasureIcon = NodePath("Control/CatchArea/ChestIcon")
+progressBar = NodePath("Control/CatchArea/ProgressBar")
+labelFishName = NodePath("Control/LabelFishName")
+burst = NodePath("GPUParticles2D")
+
+[node name="Control" type="Control" parent="." unique_id=1179953720]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CatchArea" type="Control" parent="Control" unique_id=350046434]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -38.0
+offset_right = -110.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.44, 3.7599993)
+
+[node name="barTrack" type="ColorRect" parent="Control/CatchArea" unique_id=1273163533]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -60.0
+offset_right = 15.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.28162414, 0.42997402, 1)
+
+[node name="catchBar" type="ColorRect" parent="Control/CatchArea" unique_id=2097130463]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.397064
+offset_top = 39.840443
+offset_right = 11.397064
+offset_bottom = 73.8441
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9189192, 0.4468084)
+color = Color(0.011764706, 1, 1, 1)
+
+[node name="FishIcon" type="TextureRect" parent="Control/CatchArea" unique_id=357199834]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 35.0
+offset_bottom = 35.0
+texture = ExtResource("1_d5xeh")
+expand_mode = 3
+
+[node name="ChestIcon" type="TextureRect" parent="Control/CatchArea" unique_id=1190977106]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 35.0
+offset_bottom = 35.0
+texture = ExtResource("2_qfikw")
+expand_mode = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/CatchArea" unique_id=2104819975]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 80.0
+offset_right = 157.0
+offset_bottom = 107.0
+rotation = -1.5707964
+show_percentage = false
+
+[node name="LabelFishName" type="Label" parent="Control" unique_id=1716166538]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -15.0
+offset_right = 28.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2022670755]
+position = Vector2(542, 105)
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ced8g")

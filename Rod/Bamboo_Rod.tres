@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RodType" format=3 uid="uid://dk5su6w7bglgt"]
+
+[ext_resource type="Script" uid="uid://dtxvnr6551loc" path="res://RodType.gd" id="1_vstgk"]
+
+[resource]
+script = ExtResource("1_vstgk")
+bite_rate_mult = 1.5
+metadata/_custom_type_script = "uid://dtxvnr6551loc"

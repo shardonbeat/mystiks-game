@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bjsf3q6hvbyji"]
+
+[ext_resource type="Script" uid="uid://cli7lm14oq1kh" path="res://Scenes/player.gd" id="1_cvnsp"]
+[ext_resource type="SpriteFrames" uid="uid://cy7xqwuc4hxt" path="res://Player/prueba_sprite_frame.tres" id="1_v0iea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ced8g"]
+size = Vector2(20, 43)
+
+[node name="Player" type="CharacterBody2D" unique_id=243586245 node_paths=PackedStringArray("animation")]
+collision_layer = 2
+script = ExtResource("1_cvnsp")
+animation = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496030370]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_ced8g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1420129945]
+sprite_frames = ExtResource("1_v0iea")
+animation = &"jump"
+frame = 3
+frame_progress = 0.8902201
