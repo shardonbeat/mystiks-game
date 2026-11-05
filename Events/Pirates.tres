@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventType" format=3 uid="uid://cvfqqya124i1q"]
+
+[ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="1_0ih8x"]
+
+[resource]
+script = ExtResource("1_0ih8x")
+event_name = "Ataque de Piratas"
+metadata/_custom_type_script = "uid://cwb4ime54bdnw"

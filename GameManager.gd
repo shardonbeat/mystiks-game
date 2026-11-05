@@ -7,7 +7,7 @@ var energy: int = 100
 var money: int = 100
 var food: int = 50
 
-var is_on_boat: bool = true
+var is_on_boat: bool = false
 var is_on_route: bool = false
 
 var equipped_mystik: Dictionary = {

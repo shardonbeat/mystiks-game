@@ -128,10 +128,11 @@ func _prompt_hook():
 
 func _win():
 	_state = STATE.END
-	if burst:
-		burst.restart()
-		burst.emitting = true
 	_punch_ui(root_ui, 1.08, 0.15)
+	if burst:
+		burst.one_shot = true 
+		burst.restart()
+		await burst.finished
 	
 	await get_tree().create_timer(0.4).timeout
 	emit_signal("fishing_finished", true, fish, int(_treasure_val))

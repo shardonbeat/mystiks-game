@@ -16,13 +16,12 @@ tile_map_data = PackedByteArray("AADy/wIAAAABAAAAAADz/wIAAAACAAAAAAD0/wIAAAADAAA
 tile_set = ExtResource("1_nskf2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=495166678]
-z_index = -1
+z_index = -3
 position = Vector2(62, -18)
 scale = Vector2(1.3926729, 1.1105585)
 texture = ExtResource("2_jtunb")
 
 [node name="Player" parent="." unique_id=243586245 instance=ExtResource("3_ym7p0")]
-RPG_PRUEBA = null
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=967976215 node_paths=PackedStringArray("follow_target")]
 top_level = true

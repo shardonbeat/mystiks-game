@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://03dlxi6rlp8a"]
+
+[ext_resource type="Script" uid="uid://bconklck8gxw2" path="res://Scenes/event_scene.gd" id="1_asdfo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_asdfo"]
+font_size = 50
+
+[node name="EventScene" type="CanvasLayer" unique_id=1968741209]
+script = ExtResource("1_asdfo")
+
+[node name="Control" type="Control" parent="." unique_id=194108520]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=998441046]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 473.5
+offset_right = 638.5
+offset_bottom = 69.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+text = "Evento"
+label_settings = SubResource("LabelSettings_asdfo")
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1174224109]
+modulate = Color(1, 1, 1, 0.42745098)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0, 0, 0, 1)

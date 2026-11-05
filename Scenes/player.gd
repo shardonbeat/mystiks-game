@@ -3,33 +3,35 @@ extends CharacterBody2D
 @export var animation: AnimatedSprite2D
 @export var fishingMinigame: PackedScene
 
-@export var RPG_PRUEBA: PackedScene
-
 var _speed: float = 100.0
 var _jump_speed: float = -300.0
 var _is_fishing: bool = false
 var _current_fishing_instance: Node = null
 
-func _physics_process(delta: float) -> void:
-	
-	if Input.is_action_just_pressed("interact"):
-		switch_to_scene()
-	
+func _unhandled_input(event: InputEvent) -> void:
 	# Fishing
-	if _is_fishing:
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
-	
 	if Input.is_action_just_pressed("fish") and is_on_floor():
 		if GameManager.is_on_boat:
 			_start_fishing()
 		else:
 			print("No puedes pescar aqui.")
-		return
+		get_viewport().set_input_as_handled()
 		
+		# Interact
+	if Input.is_action_just_pressed("interact"):
+		print("GOING TO RPG ZONE")
+		var main_node = get_tree().current_scene
+		if main_node.has_method("change_zone"):
+			main_node.change_zone(2)
+
+func _physics_process(delta: float) -> void:
 	# Gravity
 	velocity += get_gravity() * delta
+	
+	if _is_fishing:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	
 	# Jump
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
@@ -48,7 +50,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Animations
 	
-	
 	#if !is_on_floor():
 	#	animation.play("jump")
 	if velocity.x !=0:
@@ -59,13 +60,11 @@ func _physics_process(delta: float) -> void:
 func _start_fishing() -> void:
 	if not fishingMinigame:
 		print("ERROR: Escena de Pesca no asignada a Player.")
+		return
 		
 	_is_fishing = true
-	
-	var _current_fishing_instance = fishingMinigame.instantiate()
-	
+	_current_fishing_instance = fishingMinigame.instantiate()
 	_current_fishing_instance.fishing_finished.connect(_on_fishing_finished)
-	
 	get_tree().current_scene.add_child(_current_fishing_instance)	
 	
 func _on_fishing_finished(success: bool, fish: FishType, value: int):
@@ -79,7 +78,3 @@ func _on_fishing_finished(success: bool, fish: FishType, value: int):
 		print("CAUGHT A FISH.")
 	else:
 		print("THE FISH GOT AWAY!")
-		
-
-func switch_to_scene():
-	get_tree().change_scene_to_packed(RPG_PRUEBA)

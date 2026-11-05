@@ -1,15 +1,20 @@
 extends Node
 
-@export var random_event_scene: PackedScene
-var event_timer: float = 0.0
+var random_event_scene: PackedScene = preload("res://Scenes/event_scene.tscn")
+var event_timer: float = 5.0
 var event_interval: float = 15.0
 
+func _ready() -> void:
+	if GameManager.is_on_route:
+		start_route()
+
 func start_route() -> void:
-	GameManager.is_on_route = true
-	GameManager.is_on_boat = true
 	event_timer = event_interval
 	emit_signal("route_started")
 	
+func stop_route() -> void:
+	GameManager.is_on_route = false
+		
 func _process(delta: float) -> void:
 	if not GameManager.is_on_route:
 		return

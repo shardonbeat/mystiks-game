@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://03dlxi6rlp8a"]
+
+[ext_resource type="Script" uid="uid://bconklck8gxw2" path="res://Scenes/event_scene.gd" id="1_asdfo"]
+[ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="2_raxqe"]
+[ext_resource type="Resource" uid="uid://b8gp0ccgvpso4" path="res://Events/BigRock.tres" id="3_e7igo"]
+[ext_resource type="Resource" uid="uid://cvfqqya124i1q" path="res://Events/Pirates.tres" id="4_2cnxj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_asdfo"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_57jcs"]
+font_size = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7igo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_raxqe"]
+bg_color = Color(0.40447766, 0.57746756, 1, 1)
+
+[node name="EventScene" type="CanvasLayer" unique_id=1968741209 node_paths=PackedStringArray("root_event_ui", "eventName", "exit_button")]
+layer = 8
+script = ExtResource("1_asdfo")
+events = Array[ExtResource("2_raxqe")]([ExtResource("3_e7igo"), ExtResource("4_2cnxj")])
+root_event_ui = NodePath("Control")
+eventName = NodePath("Control/LabelEventName")
+exit_button = NodePath("Control/Button")
+
+[node name="Control" type="Control" parent="." unique_id=194108520]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1174224109]
+modulate = Color(1, 1, 1, 0.42745098)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LabelTitle" type="Label" parent="Control" unique_id=998441046]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 473.5
+offset_right = 638.5
+offset_bottom = 69.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+text = "Evento"
+label_settings = SubResource("LabelSettings_asdfo")
+
+[node name="LabelEventName" type="Label" parent="Control" unique_id=1796723615]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 760.0
+offset_bottom = 128.0
+label_settings = SubResource("LabelSettings_57jcs")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control" unique_id=1756169971]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 368.0
+offset_right = 744.0
+offset_bottom = 448.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_e7igo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_raxqe")
+text = "Exit"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_exit_button_pressed"]

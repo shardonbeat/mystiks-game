@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventType" format=3 uid="uid://b8gp0ccgvpso4"]
+
+[ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="1_mvr4f"]
+
+[resource]
+script = ExtResource("1_mvr4f")
+event_name = "Roca Gigante"
+metadata/_custom_type_script = "uid://cwb4ime54bdnw"
