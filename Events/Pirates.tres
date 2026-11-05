@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_0ih8x")
 event_name = "Ataque de Piratas"
+event_description = "Unos malvados piratas te bloquean el paso."
 metadata/_custom_type_script = "uid://cwb4ime54bdnw"

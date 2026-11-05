@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_mvr4f")
 event_name = "Roca Gigante"
+event_description = "Una roca gigante ha aparecido en el camino."
 metadata/_custom_type_script = "uid://cwb4ime54bdnw"

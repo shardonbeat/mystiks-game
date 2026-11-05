@@ -1,11 +1,18 @@
 extends CanvasLayer
 
 @export var events: Array[EventType]
-var last_event: EventType
+static var last_event: EventType
 
 @export var root_event_ui: Control
 @export var eventName: Label
+@export var eventDescription: RichTextLabel
+
+@export var labelFuel: Label
+@export var labelStamina: Label
+@export var labelMoney: Label
+
 @export var exit_button: Button
+
 
 var is_on_event: bool = false
 
@@ -20,6 +27,7 @@ func start_random_event():
 	#! Los eventos comienzan uno encima del otro, se crean
 	#! varias instancias de evento sin haber terminado la anterior.
 	if is_on_event:
+		push_error("ERROR: Ya hay un evento activo.")
 		return
 		
 	if events.is_empty():
@@ -29,7 +37,7 @@ func start_random_event():
 	var current_event: EventType = null
 	
 	while true:
-		current_event= events.pick_random()
+		current_event = events.pick_random()
 		
 		if current_event == null:
 			push_error("ERROR: El evento seleccionado en la lista es nulo.")
@@ -40,6 +48,7 @@ func start_random_event():
 	
 	is_on_event = true
 	var current_event_name: String = current_event.event_name
+	var current_event_desc: String = current_event.event_description
 	
 	print("RANDOM EVENT! " + current_event_name)
 	if root_event_ui:
@@ -47,6 +56,14 @@ func start_random_event():
 		
 	if eventName:	
 		eventName.text = current_event_name
+		
+	if eventDescription:
+		eventDescription.text = "[center]" + current_event_desc + "[/center]"
+		
+	if GameManager && labelFuel && labelStamina && labelMoney:
+		labelFuel.text = ("Combustible: " + str(GameManager.coal))
+		labelStamina.text = ("Energia: " + str(GameManager.coal))
+		labelMoney.text = ("Dinero: " + str(GameManager.coal))
 		
 	last_event = current_event
 
@@ -65,6 +82,7 @@ el sistema RPG base.
 '''
 func _on_exit_button_pressed():
 	is_on_event = false
+	print("Event flew away!")
 	if root_event_ui:
 		root_event_ui.visible = false
 		

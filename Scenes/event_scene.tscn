@@ -9,19 +9,18 @@
 font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_57jcs"]
-font_size = 35
+font_size = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7igo"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_raxqe"]
-bg_color = Color(0.40447766, 0.57746756, 1, 1)
-
-[node name="EventScene" type="CanvasLayer" unique_id=1968741209 node_paths=PackedStringArray("root_event_ui", "eventName", "exit_button")]
+[node name="EventScene" type="CanvasLayer" unique_id=1968741209 node_paths=PackedStringArray("root_event_ui", "eventName", "eventDescription", "labelFuel", "labelStamina", "labelMoney", "exit_button")]
 layer = 8
 script = ExtResource("1_asdfo")
 events = Array[ExtResource("2_raxqe")]([ExtResource("3_e7igo"), ExtResource("4_2cnxj")])
 root_event_ui = NodePath("Control")
 eventName = NodePath("Control/LabelEventName")
+eventDescription = NodePath("Control/LabelEventDescription")
+labelFuel = NodePath("Control/VBoxContainer/LabelFuel")
+labelStamina = NodePath("Control/VBoxContainer/LabelStamina")
+labelMoney = NodePath("Control/VBoxContainer/LabelMoney")
 exit_button = NodePath("Control/Button")
 
 [node name="Control" type="Control" parent="." unique_id=194108520]
@@ -29,7 +28,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=1174224109]
 modulate = Color(1, 1, 1, 0.42745098)
@@ -52,8 +51,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 473.5
-offset_right = 638.5
+offset_left = 468.0
+offset_right = 633.0
 offset_bottom = 69.0
 grow_horizontal = 2
 size_flags_horizontal = 0
@@ -69,14 +68,46 @@ offset_bottom = 128.0
 label_settings = SubResource("LabelSettings_57jcs")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Control" unique_id=1756169971]
+[node name="LabelEventDescription" type="RichTextLabel" parent="Control" unique_id=1758188038]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 368.0
-offset_right = 744.0
-offset_bottom = 448.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_e7igo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_raxqe")
+offset_left = 272.00003
+offset_top = 104.0
+offset_right = 648.0
+offset_bottom = 168.0
+scale = Vector2(1.7599994, 2)
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1494254011]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 268.0
+offset_bottom = 399.0
+
+[node name="LabelFuel" type="Label" parent="Control/VBoxContainer" unique_id=1367144873]
+layout_mode = 2
+text = "Combustible:"
+label_settings = SubResource("LabelSettings_57jcs")
+
+[node name="LabelStamina" type="Label" parent="Control/VBoxContainer" unique_id=831169649]
+layout_mode = 2
+text = "Energia:"
+label_settings = SubResource("LabelSettings_57jcs")
+
+[node name="LabelMoney" type="Label" parent="Control/VBoxContainer" unique_id=416617751]
+layout_mode = 2
+text = "Dinero:"
+label_settings = SubResource("LabelSettings_57jcs")
+
+[node name="Button" type="Button" parent="Control" unique_id=1684320124]
+z_index = 2
+layout_mode = 0
+offset_left = 848.0
+offset_top = 544.0
+offset_right = 1120.0
+offset_bottom = 608.0
 text = "Exit"
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_exit_button_pressed"]
