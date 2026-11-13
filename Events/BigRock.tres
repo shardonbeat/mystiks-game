@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="EventType" format=3 uid="uid://b8gp0ccgvpso4"]
 
 [ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="1_mvr4f"]
+[ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://EventOption.gd" id="1_q8i0k"]
 
 [resource]
 script = ExtResource("1_mvr4f")
 event_name = "Roca Gigante"
 event_description = "Una roca gigante ha aparecido en el camino."
+event_solving_options = Array[ExtResource("1_q8i0k")]([null, null, null])
 metadata/_custom_type_script = "uid://cwb4ime54bdnw"

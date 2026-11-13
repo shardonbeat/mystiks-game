@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="2_raxqe"]
 [ext_resource type="Resource" uid="uid://b8gp0ccgvpso4" path="res://Events/BigRock.tres" id="3_e7igo"]
 [ext_resource type="Resource" uid="uid://cvfqqya124i1q" path="res://Events/Pirates.tres" id="4_2cnxj"]
+[ext_resource type="Texture2D" uid="uid://l1qqjwbwrs4q" path="res://Assets/tornPapelFrame.png" id="5_e7igo"]
+[ext_resource type="LabelSettings" uid="uid://bg36fhx1npscc" path="res://eventOptions/eventOptions.tres" id="6_2cnxj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_asdfo"]
 font_size = 50
@@ -11,7 +13,7 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_57jcs"]
 font_size = 32
 
-[node name="EventScene" type="CanvasLayer" unique_id=1968741209 node_paths=PackedStringArray("root_event_ui", "eventName", "eventDescription", "labelFuel", "labelStamina", "labelMoney", "exit_button")]
+[node name="EventScene" type="CanvasLayer" unique_id=1968741209 node_paths=PackedStringArray("root_event_ui", "eventName", "eventDescription", "labelFuel", "labelStamina", "labelMoney", "option_buttons", "exit_button")]
 layer = 8
 script = ExtResource("1_asdfo")
 events = Array[ExtResource("2_raxqe")]([ExtResource("3_e7igo"), ExtResource("4_2cnxj")])
@@ -21,6 +23,7 @@ eventDescription = NodePath("Control/LabelEventDescription")
 labelFuel = NodePath("Control/VBoxContainer/LabelFuel")
 labelStamina = NodePath("Control/VBoxContainer/LabelStamina")
 labelMoney = NodePath("Control/VBoxContainer/LabelMoney")
+option_buttons = [NodePath("Control/HBoxContainer/TextureButton"), NodePath("Control/HBoxContainer/TextureButton2"), NodePath("Control/HBoxContainer/TextureButton3")]
 exit_button = NodePath("Control/Button")
 
 [node name="Control" type="Control" parent="." unique_id=194108520]
@@ -101,13 +104,74 @@ layout_mode = 2
 text = "Dinero:"
 label_settings = SubResource("LabelSettings_57jcs")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1305073307]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 448.0
+offset_right = 802.0
+offset_bottom = 573.0
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer" unique_id=1323700023]
+custom_minimum_size = Vector2(150, 125)
+layout_mode = 2
+texture_normal = ExtResource("5_e7igo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/TextureButton" unique_id=922695789]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 101.0
+label_settings = ExtResource("6_2cnxj")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureButton2" type="TextureButton" parent="Control/HBoxContainer" unique_id=1791362726]
+custom_minimum_size = Vector2(150, 125)
+layout_mode = 2
+texture_normal = ExtResource("5_e7igo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/TextureButton2" unique_id=1146017802]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 101.0
+label_settings = ExtResource("6_2cnxj")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureButton3" type="TextureButton" parent="Control/HBoxContainer" unique_id=41888272]
+custom_minimum_size = Vector2(150, 125)
+layout_mode = 2
+texture_normal = ExtResource("5_e7igo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/TextureButton3" unique_id=1691116639]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 101.0
+label_settings = ExtResource("6_2cnxj")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="Button" type="Button" parent="Control" unique_id=1684320124]
 z_index = 2
 layout_mode = 0
-offset_left = 848.0
-offset_top = 544.0
-offset_right = 1120.0
-offset_bottom = 608.0
+offset_left = 968.0
+offset_top = 520.0
+offset_right = 1144.0
+offset_bottom = 632.0
 text = "Exit"
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_exit_button_pressed"]

@@ -11,6 +11,7 @@ static var last_event: EventType
 @export var labelStamina: Label
 @export var labelMoney: Label
 
+@export var option_buttons: Array[TextureButton]	
 @export var exit_button: Button
 
 
@@ -65,8 +66,24 @@ func start_random_event():
 		labelStamina.text = ("Energia: " + str(GameManager.coal))
 		labelMoney.text = ("Dinero: " + str(GameManager.coal))
 		
+	setup_options(current_event.event_solving_options)
+		
 	last_event = current_event
 
+func setup_options(choices: Array):
+	for i in range(option_buttons.size()):
+		if i < option_buttons.size():
+			
+			var btn = option_buttons[i]
+			var label_node = option_buttons[i].find_child("Label", true, false) as Label
+			if label_node:
+				label_node.text = choices[i]
+				
+			btn.mouse_entered.connect(func(): btn.self_modulate = Color(1.3, 1.3, 1.3))
+			btn.mouse_exited.connect(func(): btn.self_modulate = Color(1.0, 1.0, 1.0))
+		else:
+			option_buttons[i].visible = false
+			
 '''
 BOTON DE PRUEBA
 
