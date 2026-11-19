@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bofdhtn0ulibe" path="res://Scenes/prueba.tscn" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://1d2435n4ac8o" path="res://Scenes/main_scene.gd" id="1_jv6wh"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6l7je"]
+[ext_resource type="PackedScene" uid="uid://b5arj605yceb6" path="res://Scenes/chill_island.tscn" id="3_iacmt"]
 [ext_resource type="PackedScene" uid="uid://cq70kpwsnnr5j" path="res://Scenes/rpg-prueba.tscn" id="3_x6ack"]
 
 [sub_resource type="Animation" id="Animation_iacmt"]
@@ -42,10 +43,12 @@ _data = {
 &"transition_out": SubResource("Animation_x6ack")
 }
 
-[node name="main_scene" type="Node2D" unique_id=1128078412 node_paths=PackedStringArray("animation")]
+[node name="main_scene" type="Node2D" unique_id=1128078412 node_paths=PackedStringArray("animation", "top_bar", "bottom_bar")]
 script = ExtResource("1_jv6wh")
 animation = NodePath("TransitionCanvas/TransitionPlayer")
-zones = Array[PackedScene]([ExtResource("1_52fb6"), ExtResource("3_x6ack")])
+zones = Array[PackedScene]([ExtResource("1_52fb6"), ExtResource("3_iacmt"), ExtResource("3_x6ack")])
+top_bar = NodePath("CinematicLayer/TopBar")
+bottom_bar = NodePath("CinematicLayer/BottomBar")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=543521517]
 physics_interpolation_mode = 1
@@ -75,3 +78,25 @@ color = Color(0, 0, 0, 1)
 [node name="TransitionPlayer" type="AnimationPlayer" parent="TransitionCanvas" unique_id=252869402]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_iacmt")
+
+[node name="CinematicLayer" type="CanvasLayer" parent="." unique_id=156363328]
+layer = 2
+
+[node name="TopBar" type="ColorRect" parent="CinematicLayer" unique_id=894256200]
+z_index = 2
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BottomBar" type="ColorRect" parent="CinematicLayer" unique_id=1094266138]
+z_index = 2
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)

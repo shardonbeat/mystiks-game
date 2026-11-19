@@ -8,10 +8,22 @@ var _jump_speed: float = -300.0
 var _is_fishing: bool = false
 var _current_fishing_instance: Node = null
 
+var current_interactable: Interactable = null
+
+var boat_min: Vector2
+var boat_max: Vector2
+
 func _unhandled_input(event: InputEvent) -> void:
+	if GameManager.is_on_event:
+		return
+	
+	if event.is_action_pressed("use_mystik"):
+		if GameManager.use_mystik_help():
+			get_viewport().set_input_as_handled()
+	
 	# Fishing
-	if Input.is_action_just_pressed("fish") and is_on_floor():
-		if GameManager.is_on_boat:
+	if Input.is_action_just_pressed("fish"):
+		if GameManager.is_on_boat and !_is_fishing:
 			_start_fishing()
 		else:
 			print("No puedes pescar aqui.")
@@ -19,34 +31,55 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		# Interact
 	if Input.is_action_just_pressed("interact"):
-		print("GOING TO RPG ZONE")
-		var main_node = get_tree().current_scene
-		if main_node.has_method("change_zone"):
-			main_node.change_zone(2)
+		if current_interactable != null:
+			current_interactable.trigger_interaction(self)
+			get_viewport().set_input_as_handled()
 
 func _physics_process(delta: float) -> void:
 	# Gravity
-	velocity += get_gravity() * delta
-	
-	if _is_fishing:
-		velocity = Vector2.ZERO
+	if GameManager.is_on_boat:
+		if GameManager.is_on_event:
+			velocity = Vector2.ZERO
+			animation.play("idle")
+			move_and_slide()
+			return
+			
+		if _is_fishing:
+			velocity = Vector2.ZERO
+			move_and_slide()
+			return
+			
+		var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
+		velocity = input_dir * _speed
+		
+		if velocity.x > 0:
+			animation.flip_h = true
+		elif velocity.x < 0:
+			animation.flip_h = false
+			
 		move_and_slide()
-		return
-	
-	# Jump
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = _jump_speed
-	
-	# Movement
-	if Input.is_action_pressed("Right"):
-		velocity.x = _speed
-		animation.flip_h = true
-	elif Input.is_action_pressed("Left"):
-		velocity.x = -_speed
-		animation.flip_h = false
+		
+		if boat_min != Vector2.ZERO and boat_max != Vector2.ZERO:
+			global_position.x = clamp(global_position.x, min(boat_min.x, boat_max.x), max(boat_min.x, boat_max.x))
+			global_position.y = clamp(global_position.y, min(boat_min.y, boat_max.y), max(boat_min.y, boat_max.y))
+		
 	else:
-		velocity.x = 0
-	move_and_slide()
+		velocity += get_gravity() * delta
+	
+		# Jump
+		if Input.is_action_just_pressed("Jump") and is_on_floor():
+			velocity.y = _jump_speed
+		
+		# Movement
+		if Input.is_action_pressed("Right"):
+			velocity.x = _speed
+			animation.flip_h = true
+		elif Input.is_action_pressed("Left"):
+			velocity.x = -_speed
+			animation.flip_h = false
+		else:
+			velocity.x = 0
+		move_and_slide()
 	
 	# Animations
 	

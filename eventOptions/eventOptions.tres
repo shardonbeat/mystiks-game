@@ -1,5 +1,8 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://bg36fhx1npscc"]
 
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="1_sd8tl"]
+
 [resource]
+font = ExtResource("1_sd8tl")
 font_size = 15
 font_color = Color(0.23842368, 0.26913044, 0.37404752, 1)

@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dopjj3n6ue8yt"]
+
+[ext_resource type="Texture2D" uid="uid://5ih57p08kmy5" path="res://Assets/mystilarum map.png" id="1_0jem7"]
+[ext_resource type="Script" uid="uid://cnnav2xn86jup" path="res://map_point.gd" id="2_rgk7w"]
+[ext_resource type="SpriteFrames" uid="uid://cs6hx8s3wmnwf" path="res://map/map-selection-icon.tres" id="2_y5bln"]
+
+[node name="navigationMap" type="CanvasLayer" unique_id=476661084]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1696843287]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.20784314)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1418990696]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0jem7")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1313763927]
+z_index = 25
+offset_left = 151.0
+offset_top = 209.0
+offset_right = 191.0
+offset_bottom = 249.0
+script = ExtResource("2_rgk7w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureButton" unique_id=1543787340]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("2_y5bln")
+animation = &"expand"
+frame_progress = 0.95068204
+centered = false
+
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=1821403309]
+z_index = 25
+offset_left = 137.0
+offset_top = 291.0
+offset_right = 177.0
+offset_bottom = 331.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureButton2" unique_id=412974650]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("2_y5bln")
+animation = &"expand"
+centered = false
+
+[node name="TextureButton3" type="TextureButton" parent="." unique_id=127498057]
+z_index = 25
+offset_left = 219.0
+offset_top = 392.0
+offset_right = 259.0
+offset_bottom = 432.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureButton3" unique_id=774540134]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("2_y5bln")
+animation = &"expand"
+centered = false
+
+[node name="TextureButton4" type="TextureButton" parent="." unique_id=919123672]
+z_index = 25
+offset_left = 130.0
+offset_top = 466.0
+offset_right = 170.0
+offset_bottom = 506.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureButton4" unique_id=372561575]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("2_y5bln")
+animation = &"expand"
+centered = false
+
+[node name="TextureButton5" type="TextureButton" parent="." unique_id=716776399]
+z_index = 25
+offset_left = 223.0
+offset_top = 459.0
+offset_right = 263.0
+offset_bottom = 499.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureButton5" unique_id=900181565]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("2_y5bln")
+animation = &"expand"
+centered = false
+
+[node name="ExitButton" type="Button" parent="." unique_id=733111303]
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 48.0
+offset_bottom = 44.0
+text = "Exit"

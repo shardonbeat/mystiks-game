@@ -41,6 +41,8 @@ var _treasure_val: float = 0.0
 var _fish_seed: float
 
 func _ready() -> void:
+	GameManager.event_state_changed.connect(_on_event_state_changed)
+	
 	if not fish or not rod:
 		push_warning("PESCA REQUIERE AL MENOS UN PEZ Y UNA CAÑA.")
 		return
@@ -243,3 +245,11 @@ func _time_freeze(seconds: float):
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(seconds, true, true, true).timeout
 	Engine.time_scale = 1.0
+	
+func _on_event_state_changed(is_active: bool):
+	if is_active:
+		process_mode = Node.PROCESS_MODE_DISABLED
+		visible = false
+	else:
+		process_mode = Node.PROCESS_MODE_INHERIT
+		visible = true

@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="1_mvr4f"]
 [ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://EventOption.gd" id="1_q8i0k"]
+[ext_resource type="Resource" uid="uid://cqhvdbmx7ikii" path="res://Events/EventSolvingOptions/ESCAPE.tres" id="2_jb3lh"]
+[ext_resource type="Resource" uid="uid://b5crs1pgs55i1" path="res://Events/EventSolvingOptions/ESCONDERSE.tres" id="3_qfuo7"]
 
 [resource]
 script = ExtResource("1_mvr4f")
 event_name = "Roca Gigante"
 event_description = "Una roca gigante ha aparecido en el camino."
-event_solving_options = Array[ExtResource("1_q8i0k")]([null, null, null])
+event_solving_options = Array[ExtResource("1_q8i0k")]([ExtResource("2_jb3lh"), ExtResource("2_jb3lh"), ExtResource("3_qfuo7")])
 metadata/_custom_type_script = "uid://cwb4ime54bdnw"

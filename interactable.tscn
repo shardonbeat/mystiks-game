@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bj6l53i60q03t"]
+
+[ext_resource type="Script" uid="uid://by6y5ncjm8lxf" path="res://interactable.gd" id="1_wh154"]
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="2_jcy0q"]
+[ext_resource type="Texture2D" uid="uid://fvdv1h6geolr" path="res://Assets/button-ind.png" id="3_0k2he"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0k2he"]
+font = ExtResource("2_jcy0q")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_wh154"]
+font = ExtResource("2_jcy0q")
+font_size = 7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
+
+[node name="interactable" type="Area2D" unique_id=848467934]
+script = ExtResource("1_wh154")
+options = Array[String]([])
+
+[node name="OptionsList" type="VBoxContainer" parent="." unique_id=732953049]
+custom_minimum_size = Vector2(0, 16)
+offset_top = -17.0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="OptionTemplate" type="Control" parent="OptionsList" unique_id=178956982]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="prompt_button" type="Label" parent="OptionsList/OptionTemplate" unique_id=1175969371]
+visible = false
+z_index = 25
+layout_mode = 0
+offset_left = 4.0
+offset_top = -11.0
+offset_right = 44.0
+offset_bottom = 12.0
+text = "Q"
+label_settings = SubResource("LabelSettings_0k2he")
+
+[node name="prompt_text" type="Label" parent="OptionsList/OptionTemplate" unique_id=1178727298]
+z_index = 20
+layout_mode = 0
+offset_left = 13.0
+offset_top = -10.0
+offset_right = 148.0
+offset_bottom = 13.0
+label_settings = SubResource("LabelSettings_wh154")
+
+[node name="ButtonInd" type="Sprite2D" parent="OptionsList/OptionTemplate" unique_id=1493363372]
+visible = false
+z_index = 20
+position = Vector2(12, -7)
+scale = Vector2(0.36666095, 0.36666095)
+texture = ExtResource("3_0k2he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=483505003]
+shape = SubResource("RectangleShape2D_qe4n8")

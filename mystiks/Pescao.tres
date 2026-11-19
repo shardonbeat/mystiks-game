@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MystikData" format=3 uid="uid://ds3tknqh550jx"]
+
+[ext_resource type="Texture2D" uid="uid://begrb1wlcq3b8" path="res://Assets/Mystiks/Delfino.png" id="1_75olb"]
+[ext_resource type="Script" uid="uid://dxdemk0nndfvu" path="res://mystiks/mystik_data.gd" id="1_262io"]
+
+[resource]
+script = ExtResource("1_262io")
+id = "delfino"
+mystik_name = "Delfino"
+icon = ExtResource("1_75olb")
+description = "Un amistoso delfin muy veloz, es muy bueno ayudando a los viajeros en la duracion de sus viajes."
+metadata/_custom_type_script = "uid://dxdemk0nndfvu"

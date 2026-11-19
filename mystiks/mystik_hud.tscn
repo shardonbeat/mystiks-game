@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://divoji3yyc3vl"]
+
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="1_2jor7"]
+[ext_resource type="Script" uid="uid://bk22sbvo5nsir" path="res://mystiks/mystik_hud.gd" id="1_nt8hn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdepk"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.0037577422, 0.11440038, 0.20084321, 0.49019608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qe4n8"]
+font = ExtResource("1_2jor7")
+font_size = 24
+
+[node name="MystikHUD" type="PanelContainer" unique_id=561235731]
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdepk")
+script = ExtResource("1_nt8hn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=942058058]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1147863425]
+z_index = 5
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2065704283]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="UsesLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=326713292]
+layout_mode = 2
+text = "3/3 [R]"
+label_settings = SubResource("LabelSettings_qe4n8")
+
+[node name="CooldawnBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer" unique_id=98645693]
+custom_minimum_size = Vector2(84, 10)
+layout_mode = 2

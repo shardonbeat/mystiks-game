@@ -1,10 +1,14 @@
 [gd_resource type="Resource" script_class="EventType" format=3 uid="uid://cvfqqya124i1q"]
 
 [ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="1_0ih8x"]
+[ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://EventOption.gd" id="1_8v10w"]
+[ext_resource type="Resource" uid="uid://cqhvdbmx7ikii" path="res://Events/EventSolvingOptions/ESCAPE.tres" id="2_37ghs"]
+[ext_resource type="Resource" uid="uid://dh02htwicfsqy" path="res://Events/EventSolvingOptions/ATAQUE.tres" id="3_tiq6j"]
+[ext_resource type="Resource" uid="uid://b5crs1pgs55i1" path="res://Events/EventSolvingOptions/ESCONDERSE.tres" id="4_64l4k"]
 
 [resource]
 script = ExtResource("1_0ih8x")
 event_name = "Ataque de Piratas"
 event_description = "Unos malvados piratas te bloquean el paso."
-event_solving_options = Array[String](["Ataque!", "Huir", "Negociar"])
+event_solving_options = Array[ExtResource("1_8v10w")]([ExtResource("2_37ghs"), ExtResource("3_tiq6j"), ExtResource("4_64l4k")])
 metadata/_custom_type_script = "uid://cwb4ime54bdnw"

@@ -1,38 +1,121 @@
-[gd_scene format=4 uid="uid://cq70kpwsnnr5j"]
+[gd_scene format=3 uid="uid://cq70kpwsnnr5j"]
 
 [ext_resource type="TileSet" uid="uid://cr3knhishg5yh" path="res://Tile_Sets/prueba_suelo1.tres" id="1_r8t5l"]
 [ext_resource type="Texture2D" uid="uid://dgsn35xx4g6pm" path="res://Assets/Captura de pantalla 2026-10-28 235005.png" id="2_18pk3"]
+[ext_resource type="FastNoiseLite" uid="uid://db6inoc3j6t8t" path="res://Assets/fog_noise.tres" id="3_k0qo1"]
 [ext_resource type="PackedScene" uid="uid://bjsf3q6hvbyji" path="res://Scenes/player.tscn" id="3_nhjly"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_nhjly"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_k0qo1"]
+[ext_resource type="Material" uid="uid://b45cei5o18uam" path="res://shaders/fog_shader.tres" id="6_nhjly"]
+[ext_resource type="PackedScene" uid="uid://de5i6g20raxfg" path="res://bote.tscn" id="8_iws5a"]
+[ext_resource type="Texture2D" uid="uid://inw27ljsn0j6" path="res://Assets/bar_under.png" id="9_4t6qg"]
+[ext_resource type="Texture2D" uid="uid://w48m4yhtj6k5" path="res://Assets/bar_progress.png" id="10_13ay6"]
+[ext_resource type="Script" uid="uid://baahqwi3uyxc" path="res://Scenes/route_hud.gd" id="11_quslg"]
+[ext_resource type="Texture2D" uid="uid://dk81eslc8mae1" path="res://Assets/boat_icon.png" id="12_pnj72"]
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="13_pnj72"]
+[ext_resource type="PackedScene" uid="uid://divoji3yyc3vl" path="res://mystiks/mystik_hud.tscn" id="14_r5gyg"]
+
+[sub_resource type="Gradient" id="Gradient_75rlh"]
+offsets = PackedFloat32Array(0.089655176, 1)
+colors = PackedColorArray(0.38039216, 0.64705884, 0.67058825, 0.32156864, 1, 1, 1, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qe4n8"]
+width = 1051
+height = 195
+noise = ExtResource("3_k0qo1")
+color_ramp = SubResource("Gradient_75rlh")
+seamless = true
 
 [sub_resource type="Resource" id="Resource_iws5a"]
 script = ExtResource("6_k0qo1")
+transition = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_qe4n8"]
+font = ExtResource("13_pnj72")
+font_size = 40
 
 [node name="Node2D" type="Node2D" unique_id=1831054888]
 
 [node name="lvl_floor" type="TileMapLayer" parent="." unique_id=1244784499]
 position = Vector2(419.26254, 243.78998)
-tile_map_data = PackedByteArray("AADy/wIAAAABAAAAAADz/wIAAAACAAAAAAD0/wIAAAADAAAAAAD1/wIAAAAEAAAAAAD2/wIAAAABAAAAAAD3/wIAAAACAAAAAAD4/wIAAAADAAAAAAD5/wIAAAAEAAAAAAD6/wIAAAABAAAAAAD7/wIAAAACAAAAAAD8/wIAAAADAAAAAAAHAAIAAAACAAAAAAAIAAIAAAADAAAAAAAJAAIAAAAEAAAAAAAKAAIAAAABAAAAAAALAAIAAAACAAAAAAAMAAIAAAADAAAAAAANAAIAAAAEAAAAAAAOAAIAAAADAAAAAAAPAAIAAAADAAAAAADy/wMAAAACAAEAAADz/wMAAAACAAEAAAD0/wMAAAACAAEAAAD1/wMAAAACAAEAAAD2/wMAAAACAAEAAAD3/wMAAAACAAEAAAD4/wMAAAACAAEAAAD5/wMAAAACAAEAAAD6/wMAAAACAAEAAAD7/wMAAAACAAEAAAD8/wMAAAACAAEAAAABAAMAAAACAAEAAAACAAMAAAACAAEAAAADAAMAAAACAAEAAAAEAAMAAAACAAEAAAAHAAMAAAACAAEAAAAIAAMAAAACAAEAAAAJAAMAAAACAAEAAAAKAAMAAAACAAEAAAALAAMAAAACAAEAAAAMAAMAAAACAAEAAAANAAMAAAACAAEAAAAOAAMAAAACAAEAAAAPAAMAAAACAAEAAAAPAAQAAAACAAEAAAAOAAQAAAACAAEAAAANAAQAAAACAAEAAAAMAAQAAAACAAEAAAALAAQAAAACAAEAAAAKAAQAAAACAAEAAAAJAAQAAAACAAEAAAD//wQAAAADAAIAAAD+/wQAAAADAAIAAAD9/wQAAAADAAIAAAD8/wQAAAADAAIAAAD7/wQAAAACAAEAAAD6/wQAAAADAAIAAAD5/wQAAAADAAIAAAD4/wQAAAADAAIAAAD3/wQAAAADAAIAAAD2/wQAAAADAAIAAAD1/wQAAAADAAIAAAD0/wQAAAACAAEAAADz/wQAAAACAAEAAADy/wQAAAACAAEAAAAAAAQAAAADAAIAAAABAAQAAAADAAIAAAAFAAQAAAADAAIAAAAGAAQAAAACAAEAAAAHAAQAAAACAAEAAAAIAAQAAAACAAEAAAAQAAIAAAAEAAAAAAARAAIAAAAFAAAAAAARAAMAAAALAAUAAAAQAAMAAAAHAAEAAAAQAAQAAAALAAMAAAAQAAUAAAALAAUAAAAPAAUAAAAHAAEAAAAOAAUAAAADAAIAAAANAAUAAAADAAIAAAAMAAUAAAADAAIAAAALAAUAAAADAAIAAAAKAAUAAAADAAIAAAAIAAUAAAADAAIAAAAJAAUAAAADAAIAAADy/wUAAAADAAIAAADz/wUAAAADAAIAAAD0/wUAAAADAAIAAAD1/wUAAAADAAIAAAD2/wUAAAADAAIAAAD3/wUAAAADAAIAAAD4/wUAAAADAAIAAAD5/wUAAAADAAIAAAD6/wUAAAADAAIAAAD7/wUAAAADAAIAAAD8/wUAAAADAAIAAAAGAAUAAAADAAIAAAAHAAUAAAADAAIAAAAFAAUAAAADAAIAAAAEAAUAAAADAAIAAAADAAUAAAADAAIAAAACAAUAAAADAAIAAAD+/wUAAAADAAIAAAD9/wUAAAADAAIAAAAPAAYAAAAFAAIAAAAOAAYAAAADAAIAAAANAAYAAAADAAIAAAAMAAYAAAADAAIAAAALAAYAAAADAAIAAAAKAAYAAAADAAIAAAAJAAYAAAADAAIAAAAIAAYAAAADAAIAAAAHAAYAAAADAAIAAAAGAAYAAAADAAIAAAAFAAYAAAADAAIAAAAEAAYAAAADAAIAAAADAAYAAAADAAIAAAACAAYAAAADAAIAAAABAAYAAAADAAIAAAAAAAYAAAADAAIAAAD3/wYAAAADAAIAAAD2/wYAAAADAAIAAAD1/wYAAAADAAIAAAD4/wYAAAADAAIAAAD5/wYAAAADAAIAAAD6/wYAAAADAAIAAAD7/wYAAAADAAIAAAD8/wYAAAADAAIAAAD9/wYAAAADAAIAAAD+/wYAAAADAAIAAAD//wYAAAADAAIAAADy/wYAAAADAAIAAADz/wYAAAADAAIAAAD0/wYAAAADAAIAAADx/wIAAAAAAAAAAADx/wMAAAAAAAEAAADx/wQAAAAAAAIAAADx/wUAAAAAAAIAAADx/wYAAAAAAAIAAAD9/wIAAAAOABYAAAD+/wIAAAAOABYAAAD//wIAAAAOABYAAAAAAAIAAAAOABYAAAABAAIAAAAOABYAAAACAAIAAAAOABYAAAADAAIAAAAOABYAAAAEAAIAAAAOABYAAAAFAAIAAAAOABYAAAAGAAIAAAAOABYAAAA=")
 tile_set = ExtResource("1_r8t5l")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1140391053]
+[node name="FogSprite2D" type="Sprite2D" parent="." unique_id=382723351]
+modulate = Color(0.7372549, 0.9647059, 0.972549, 0.7411765)
+z_index = 5
+texture_repeat = 2
+material = ExtResource("6_nhjly")
+position = Vector2(584, 261)
+texture = SubResource("NoiseTexture2D_qe4n8")
+
+[node name="RouteBackground" type="Sprite2D" parent="." unique_id=1140391053]
 z_index = -1
-position = Vector2(481.26263, 225.78998)
-scale = Vector2(1.3926729, 1.1105585)
+position = Vector2(485.00003, 227)
+scale = Vector2(0.9957096, 0.79400826)
 texture = ExtResource("2_18pk3")
 
 [node name="Player" parent="." unique_id=243586245 instance=ExtResource("3_nhjly")]
-position = Vector2(583, 244)
+position = Vector2(583, 263)
+scale = Vector2(0.64, 0.64)
+
+[node name="Bote" parent="." unique_id=571582101 instance=ExtResource("8_iws5a")]
+position = Vector2(584, 256)
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1218922513 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(583, 244)
+position = Vector2(583, 263)
 script = ExtResource("5_nhjly")
 follow_mode = 1
 follow_target = NodePath("../Player")
-zoom = Vector2(2.68, 2.68)
+zoom = Vector2(3.895, 3.895)
 tween_resource = SubResource("Resource_iws5a")
 follow_damping = true
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1544362740]
+script = ExtResource("11_quslg")
+
+[node name="RouteBar" type="TextureProgressBar" parent="HUD" unique_id=1082389682]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 53.0
+offset_right = -84.0
+offset_bottom = 93.0
+grow_horizontal = 2
+scale = Vector2(4.5, 4.5)
+max_value = 1.0
+step = 0.001
+value = 1.0
+texture_under = ExtResource("9_4t6qg")
+texture_progress = ExtResource("10_13ay6")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/RouteBar" unique_id=545005310]
+layout_mode = 0
+offset_left = 8.666667
+offset_right = 48.666668
+offset_bottom = 40.0
+texture = ExtResource("12_pnj72")
+stretch_mode = 2
+
+[node name="DestinationLabel" type="Label" parent="HUD" unique_id=1190439643]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 21.0
+offset_right = 113.0
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "Destino: "
+label_settings = SubResource("LabelSettings_qe4n8")
+horizontal_alignment = 1
+
+[node name="MystikHUD" parent="HUD" unique_id=561235731 instance=ExtResource("14_r5gyg")]
+offset_left = 17.0
+offset_top = 10.0
+offset_right = 202.0
+offset_bottom = 90.0
+scale = Vector2(1.3199997, 1.3199997)

@@ -1,0 +1,271 @@
+[gd_scene format=3 uid="uid://dopjj3n6ue8yt"]
+
+[ext_resource type="Script" uid="uid://kxsc1fcctis6" path="res://map/navigation_map.gd" id="1_0y4cn"]
+[ext_resource type="Texture2D" uid="uid://5ih57p08kmy5" path="res://Assets/mystilarum map.png" id="1_es1v6"]
+[ext_resource type="Script" uid="uid://cnnav2xn86jup" path="res://map/map_point.gd" id="2_siuv8"]
+[ext_resource type="Script" uid="uid://u0lk5b4rwxp6" path="res://map/island_node_data.gd" id="3_0y4cn"]
+[ext_resource type="Texture2D" uid="uid://1na6yseocaiu" path="res://Assets/dash_pattern.png" id="3_3qnan"]
+[ext_resource type="SpriteFrames" uid="uid://cs6hx8s3wmnwf" path="res://map/map-selection-icon.tres" id="3_gxr1i"]
+[ext_resource type="Material" uid="uid://dxjxrc6mt5uwl" path="res://shaders/animated_dash.tres" id="3_pnnjw"]
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="4_siuv8"]
+[ext_resource type="Texture2D" uid="uid://bffva5onlogda" path="res://Assets/background_prueba.jpg" id="7_ci7lv"]
+[ext_resource type="Texture2D" uid="uid://dgsn35xx4g6pm" path="res://Assets/Captura de pantalla 2026-10-28 235005.png" id="7_n15da"]
+[ext_resource type="Shader" uid="uid://d21qrpx7yps33" path="res://shaders/map_fog.gdshader" id="8_pvy0g"]
+
+[sub_resource type="Resource" id="Resource_siuv8"]
+script = ExtResource("3_0y4cn")
+id = "fluctantia"
+display_name = "Fluctantia"
+zone_image = ExtResource("7_n15da")
+description = "Un lugar pacifico donde se puede sentir el olor de las olas, cuenta con amistosos habitantes."
+travel_duration = 50.0
+connected_islands = Array[String](["islote_1"])
+metadata/_custom_type_script = "uid://u0lk5b4rwxp6"
+
+[sub_resource type="Resource" id="Resource_n15da"]
+script = ExtResource("3_0y4cn")
+id = "islote_1"
+display_name = "Isla Tranquila"
+zone_image = ExtResource("7_ci7lv")
+description = "Se dice que son los habitantes mas tranquilos de todo el Mystilarum."
+travel_duration = 50.0
+connected_islands = Array[String](["fluctantia", "seed_island"])
+zone_index = 2
+metadata/_custom_type_script = "uid://u0lk5b4rwxp6"
+
+[sub_resource type="Resource" id="Resource_pvy0g"]
+script = ExtResource("3_0y4cn")
+id = "seed_island"
+display_name = "Isla Semilla"
+zone_image = ExtResource("7_n15da")
+description = "La isla donde dicen y es el paraiso de la comida para los pajaros."
+connected_islands = Array[String](["islote_1", "caelumantia_1"])
+metadata/_custom_type_script = "uid://u0lk5b4rwxp6"
+
+[sub_resource type="Resource" id="Resource_pnnjw"]
+script = ExtResource("3_0y4cn")
+id = "caelumantia_2"
+display_name = "Caelumantia"
+zone_image = ExtResource("7_n15da")
+description = "Son los mas agiles en todo el Mystilarum, suelen tener un concepto distinto del Mystik"
+connected_islands = Array[String](["seed_island"])
+metadata/_custom_type_script = "uid://u0lk5b4rwxp6"
+
+[sub_resource type="Resource" id="Resource_3qnan"]
+script = ExtResource("3_0y4cn")
+id = "caelumantia_1"
+display_name = "Cueva de los Pajaros"
+zone_image = ExtResource("7_n15da")
+description = "Dicen que algunas aves se esconden en la oscuridad... Aunque no muchos vivieron para contarlo."
+connected_islands = Array[String](["seed_island"])
+metadata/_custom_type_script = "uid://u0lk5b4rwxp6"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pvy0g"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3qnan"]
+noise = SubResource("FastNoiseLite_pvy0g")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aocqr"]
+shader = ExtResource("8_pvy0g")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_3qnan")
+shader_parameter/fog_color = Color(0.85882354, 0.8392157, 0.78039217, 1)
+shader_parameter/scroll_speed = Vector2(0.015, 0.008)
+shader_parameter/map_size = Vector2(1152, 648)
+shader_parameter/pixel_size = 3.0
+shader_parameter/clear_zones = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/clear_count = 0
+shader_parameter/edge_softness = 45.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qe4n8"]
+font = ExtResource("4_siuv8")
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_n15da"]
+font = ExtResource("4_siuv8")
+font_size = 32
+
+[node name="navigationMap" type="CanvasLayer" unique_id=917143671]
+layer = 10
+script = ExtResource("1_0y4cn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=789893796]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[node name="MapWorld" type="Node2D" parent="." unique_id=1434571730]
+
+[node name="mapTexture" type="TextureRect" parent="MapWorld" unique_id=1418990696]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_es1v6")
+
+[node name="RouteLine" type="Line2D" parent="MapWorld" unique_id=971236157]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("3_pnnjw")
+default_color = Color(0, 0.18039216, 0.24705882, 1)
+texture = ExtResource("3_3qnan")
+texture_mode = 1
+
+[node name="BtnFluctantia1" type="TextureButton" parent="MapWorld" unique_id=1313763927]
+z_index = 25
+offset_left = 151.0
+offset_top = 209.0
+offset_right = 191.0
+offset_bottom = 249.0
+script = ExtResource("2_siuv8")
+data = SubResource("Resource_siuv8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MapWorld/BtnFluctantia1" unique_id=1543787340]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("3_gxr1i")
+animation = &"inactive"
+centered = false
+
+[node name="BtnIslote1" type="TextureButton" parent="MapWorld" unique_id=1821403309]
+z_index = 25
+offset_left = 137.0
+offset_top = 291.0
+offset_right = 177.0
+offset_bottom = 331.0
+script = ExtResource("2_siuv8")
+data = SubResource("Resource_n15da")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MapWorld/BtnIslote1" unique_id=412974650]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("3_gxr1i")
+animation = &"expand"
+centered = false
+
+[node name="BtnIslaSemilla" type="TextureButton" parent="MapWorld" unique_id=127498057]
+z_index = 25
+offset_left = 226.0
+offset_top = 363.0
+offset_right = 266.0
+offset_bottom = 403.0
+script = ExtResource("2_siuv8")
+data = SubResource("Resource_pvy0g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MapWorld/BtnIslaSemilla" unique_id=774540134]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("3_gxr1i")
+animation = &"expand"
+centered = false
+
+[node name="BtnCaelumantia1" type="TextureButton" parent="MapWorld" unique_id=919123672]
+z_index = 25
+offset_left = 131.0
+offset_top = 450.0
+offset_right = 171.0
+offset_bottom = 490.0
+script = ExtResource("2_siuv8")
+data = SubResource("Resource_pnnjw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MapWorld/BtnCaelumantia1" unique_id=372561575]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("3_gxr1i")
+animation = &"expand"
+centered = false
+
+[node name="BtnCaelumantia2" type="TextureButton" parent="MapWorld" unique_id=716776399]
+z_index = 25
+offset_left = 223.0
+offset_top = 439.0
+offset_right = 263.0
+offset_bottom = 479.0
+script = ExtResource("2_siuv8")
+data = SubResource("Resource_3qnan")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MapWorld/BtnCaelumantia2" unique_id=900181565]
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.5000005, 2.4374993)
+sprite_frames = ExtResource("3_gxr1i")
+animation = &"expand"
+centered = false
+
+[node name="FogOverlay" type="ColorRect" parent="MapWorld" unique_id=23707369]
+z_index = 30
+material = SubResource("ShaderMaterial_aocqr")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1989512988]
+layer = 11
+
+[node name="ExitButton" type="Button" parent="HUD" unique_id=733111303]
+z_index = 1
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 110.27002
+offset_bottom = 47.242004
+text = "Exit"
+
+[node name="InfoPanel" type="PanelContainer" parent="HUD" unique_id=112818635]
+offset_left = 708.0
+offset_top = 57.0
+offset_right = 1092.0
+offset_bottom = 569.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/InfoPanel" unique_id=1693331242]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/InfoPanel/MarginContainer" unique_id=376228252]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ZoneImage" type="TextureRect" parent="HUD/InfoPanel/MarginContainer/VBoxContainer" unique_id=422088196]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="HUD/InfoPanel/MarginContainer/VBoxContainer" unique_id=2026503254]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_qe4n8")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DescLabel" type="RichTextLabel" parent="HUD/InfoPanel/MarginContainer/VBoxContainer" unique_id=1325675654]
+modulate = Color(1, 1, 1, 0.6666667)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_siuv8")
+theme_override_font_sizes/normal_font_size = 26
+fit_content = true
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="HUD/InfoPanel/MarginContainer/VBoxContainer" unique_id=185285849]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n15da")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SailButton" type="Button" parent="HUD/InfoPanel/MarginContainer/VBoxContainer" unique_id=1731958242]
+z_index = 1
+layout_mode = 2
+text = "Zarpar"
+
+[connection signal="pressed" from="HUD/InfoPanel/MarginContainer/VBoxContainer/SailButton" to="." method="_on_sail_pressed"]

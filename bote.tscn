@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://de5i6g20raxfg"]
+
+[ext_resource type="Script" uid="uid://bjd4opckuy4ry" path="res://bote.gd" id="1_dxdai"]
+[ext_resource type="Texture2D" uid="uid://dq57tdkp8goiw" path="res://Assets/boat-back.png" id="1_wpjxt"]
+[ext_resource type="Texture2D" uid="uid://b8sa10foqanof" path="res://Assets/boat-front.png" id="2_dxdai"]
+[ext_resource type="Texture2D" uid="uid://cuclqhrrhjnd5" path="res://Assets/boat-floor.png" id="3_le4v1"]
+[ext_resource type="Texture2D" uid="uid://bcfph2olelnye" path="res://Assets/boat-oven1.png" id="4_le4v1"]
+[ext_resource type="Texture2D" uid="uid://2vnybynn20wp" path="res://Assets/boat-helm1.png" id="5_8t1f1"]
+[ext_resource type="PackedScene" uid="uid://bj6l53i60q03t" path="res://interactable.tscn" id="6_s4iqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpjxt"]
+size = Vector2(197, 76)
+
+[node name="Bote" type="Node2D" unique_id=571582101 node_paths=PackedStringArray("limit_min", "limit_max")]
+script = ExtResource("1_dxdai")
+limit_min = NodePath("LimitMin")
+limit_max = NodePath("LimitMax")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1751495049]
+
+[node name="BoatBack" type="Sprite2D" parent="Visuals" unique_id=1307497143]
+position = Vector2(-16, 0)
+texture = ExtResource("1_wpjxt")
+
+[node name="BoatFront" type="Sprite2D" parent="Visuals" unique_id=272363449]
+z_index = 4
+texture = ExtResource("2_dxdai")
+
+[node name="BoatOven" type="Sprite2D" parent="Visuals" unique_id=204595943]
+texture = ExtResource("4_le4v1")
+
+[node name="interactable" parent="Visuals/BoatOven" unique_id=848467934 instance=ExtResource("6_s4iqa")]
+position = Vector2(-84, 13)
+options = Array[String](["Prender Carbones", "Cocinar"])
+
+[node name="BoatHelm" type="Sprite2D" parent="Visuals" unique_id=875905227]
+z_index = 2
+position = Vector2(-1, 6)
+texture = ExtResource("5_8t1f1")
+
+[node name="interactable" parent="Visuals/BoatHelm" unique_id=513666605 instance=ExtResource("6_s4iqa")]
+position = Vector2(29, 12)
+options = Array[String](["Navegar", "Ver Mapa"])
+
+[node name="BoatFloor" type="Sprite2D" parent="Visuals" unique_id=478640059]
+position = Vector2(-10, 0)
+texture = ExtResource("3_le4v1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2007007641]
+process_mode = 4
+position = Vector2(-10, 0)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1224029022]
+position = Vector2(-65, 19)
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 65, 0, 156, 0, 117, 15, -15, 15, -15, 5)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1038974893]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2035330826]
+visible = false
+position = Vector2(-8.5, 23)
+shape = SubResource("RectangleShape2D_wpjxt")
+
+[node name="LimitMin" type="Marker2D" parent="." unique_id=38108279]
+position = Vector2(-77, -2)
+
+[node name="LimitMax" type="Marker2D" parent="." unique_id=2029054665]
+position = Vector2(56, 16)
+
+[connection signal="option_selected" from="Visuals/BoatHelm/interactable" to="." method="_on_helm_interactable_interacted"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

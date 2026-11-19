@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://t3lega8a2kxs"
+path="res://.godot/imported/Perfect DOS VGA 437 Win.fnt-05f0be7d8521d6f4befd7fedf9c3458a.fontdata"
+
+[deps]
+
+source_file="res://Assets/Perfect DOS VGA 437 Win.fnt"
+dest_files=["res://.godot/imported/Perfect DOS VGA 437 Win.fnt-05f0be7d8521d6f4befd7fedf9c3458a.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

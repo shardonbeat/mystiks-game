@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventOption" format=3 uid="uid://dh02htwicfsqy"]
+
+[ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://EventOption.gd" id="1_u8ul7"]
+
+[resource]
+script = ExtResource("1_u8ul7")
+option_name = " Ataque!"
+needed_resources = {
+"coal": 0,
+"energy": 10,
+"money": 5
+}
+metadata/_custom_type_script = "uid://errb2xrntg4c"
