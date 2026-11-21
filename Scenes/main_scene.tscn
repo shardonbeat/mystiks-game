@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6l7je"]
 [ext_resource type="PackedScene" uid="uid://b5arj605yceb6" path="res://Scenes/chill_island.tscn" id="3_iacmt"]
 [ext_resource type="PackedScene" uid="uid://cq70kpwsnnr5j" path="res://Scenes/rpg-prueba.tscn" id="3_x6ack"]
+[ext_resource type="PackedScene" uid="uid://c6t28tlhlc1is" path="res://Book/pause_menu.tscn" id="6_6ev3c"]
 
 [sub_resource type="Animation" id="Animation_iacmt"]
 length = 0.001
@@ -100,3 +101,5 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="." unique_id=1597777902 instance=ExtResource("6_6ev3c")]

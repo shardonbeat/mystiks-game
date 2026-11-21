@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bjsf3q6hvbyji" path="res://Scenes/player.tscn" id="5_6db7j"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_elac2"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_a1blv"]
-[ext_resource type="PackedScene" uid="uid://de5i6g20raxfg" path="res://bote.tscn" id="8_qirmh"]
+[ext_resource type="PackedScene" uid="uid://de5i6g20raxfg" path="res://Scenes/bote.tscn" id="8_qirmh"]
 
 [sub_resource type="Gradient" id="Gradient_b2hyj"]
 colors = PackedColorArray(0.38039216, 0.64705884, 0.67058825, 0.32156864, 1, 1, 1, 1)

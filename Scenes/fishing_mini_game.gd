@@ -35,6 +35,8 @@ var _bar_pos: float = 0.0
 var _bar_vel: float = 0.0
 var _fish_pos: float = 0.5
 var _fish_vel: float = 0.0
+var _fish_target: float = 0.5
+var _ai_timer: float = 0.0
 var _progress_val: float = 0.0
 var _treasure_active: bool = false
 var _treasure_val: float = 0.0
@@ -131,6 +133,13 @@ func _prompt_hook():
 func _win():
 	_state = STATE.END
 	_punch_ui(root_ui, 1.08, 0.15)
+	
+	if fish:
+		print("PEZ CAPTURADO")
+		GameManager.add_fish(fish, 1)
+	if _treasure_active and _treasure_val >= TREASURE_NEED:
+		GameManager.modify_resources(0, 0, 25, 0)
+		
 	if burst:
 		burst.one_shot = true 
 		burst.restart()
@@ -180,8 +189,9 @@ func _set_catch_bar_visual():
 func _set_defaults():
 	if fish:
 		labelFishName.text = fish.fish_name
-	barTrack.modulate = fish.tint.lerp(Color.DARK_BLUE, 0.5)
 	_bar_h = BASE_BAR_HEIGHT + (rod.bar_size_bonus if rod else 0.0)
+	_bar_h += 7.0 if GameManager.equipped_mystik.nation == GameManager.IslandNation.FLUCTANTIA \
+			else _bar_h
 	_hook_window = BASE_HOOK_WINDOW * (rod.hook_window_mult if rod else 1.0)
 	_bite_timer = _rng_bite_time()
 	_fish_seed = randf() * 1000
@@ -206,19 +216,24 @@ func _fish_center_y() -> float:
 func _set_fish_visual():
 	fishIcon.position.y = _fish_center_y() - fishIcon.size.y * fishIcon.scale.y * 0.5
 	if fish:
-		fishIcon.modulate = fish.tint
+		fishIcon.texture = fish.fish_icon
 		
 func _update_fish_motion(delta: float):
 	var d := fish.difficulty
 	match fish.pattern:
 		fish.MovePattern.SMOOTH:
 			var t = _elapsed + _fish_seed
-			var target = 0.5 + 0.35 * sin(t * 1.2) * 0.15 * sin(t * 2.7 + 1.3)
-			_fish_vel += (target - _fish_pos) * (2.2 + 2.0 * d)
-			_fish_vel += 0.84 - 0.2 * d
+			_fish_target = 0.5 + 0.38 * sin(t * (1.2 + d * 0.4))
 			
-	_fish_pos += _fish_vel * delta * 0.45
-	_fish_pos = clamp(_fish_pos, 0.02, 0.98)
+	var stiffness := 12.0 + d * 6.0
+	var damping := 4.5
+	_fish_vel += (_fish_target - _fish_pos) * stiffness * delta
+	_fish_vel -= _fish_vel * damping * delta
+	
+	_fish_pos += _fish_vel * delta
+	if _fish_pos <= 0.02 or _fish_pos >= 0.98:
+		_fish_pos = clamp(_fish_pos, 0.02, 0.98)
+		_fish_vel *= -0.4
 	_set_fish_visual()
 
 func _punch_ui(node: Node, scale_to: float, time: float):

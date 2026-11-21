@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://dslk3g1nkx32c"]
+
+[ext_resource type="Texture2D" uid="uid://inw27ljsn0j6" path="res://Assets/bar_under.png" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://bx3nd1aewlmsw" path="res://Assets/Mystilarum.jpg" id="1_ce3w2"]
+[ext_resource type="Script" uid="uid://c8vyns1jesho0" path="res://Scenes/main_menu.gd" id="1_n45e2"]
+[ext_resource type="LabelSettings" uid="uid://bg36fhx1npscc" path="res://eventOptions/eventOptions.tres" id="2_48xlc"]
+[ext_resource type="Texture2D" uid="uid://dov6temcclfru" path="res://Assets/MystiksLOGO-removebg-preview.png" id="3_1ehe0"]
+[ext_resource type="Shader" uid="uid://dar1fdri84jnm" path="res://Scenes/menu_mist.gdshader" id="6_opfnp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n45e2"]
+shader = ExtResource("6_opfnp")
+shader_parameter/edge_color = Color(0.087149374, 0.21692553, 0.35953763, 0.92156863)
+shader_parameter/mist_color = Color(0.75, 0.88, 0.95, 0.14)
+shader_parameter/vignette_intensity = 1.15
+shader_parameter/vignette_softness = 0.55
+shader_parameter/left_ui_shadow = 0.35
+shader_parameter/mist_speed = 0.025
+
+[node name="MainMenu" type="Control" unique_id=1796759627]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n45e2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=699411118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_ce3w2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CloudsOverlay" type="TextureRect" parent="." unique_id=1904125236]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AtmosphereShader" type="ColorRect" parent="." unique_id=1660128973]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=493460212]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1073.0
+offset_top = -98.0
+offset_right = -977.0
+offset_bottom = 38.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2.3614087, 2.3614087)
+theme_override_constants/separation = 20
+
+[node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=339408504]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture_normal = ExtResource("1_28flt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Play" unique_id=39141898]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -7.5
+offset_right = 17.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+label_settings = ExtResource("2_48xlc")
+
+[node name="Continue" type="TextureButton" parent="VBoxContainer" unique_id=540478488]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture_normal = ExtResource("1_28flt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Continue" unique_id=442140337]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -7.5
+offset_right = 17.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+label_settings = ExtResource("2_48xlc")
+
+[node name="Exit" type="TextureButton" parent="VBoxContainer" unique_id=329859758]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture_normal = ExtResource("1_28flt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Exit" unique_id=699867587]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -7.5
+offset_right = 17.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = ExtResource("2_48xlc")
+
+[node name="MystiksTitle" type="Sprite2D" parent="." unique_id=606375707]
+position = Vector2(310, 93)
+scale = Vector2(1.0382757, 1.0382757)
+texture = ExtResource("3_1ehe0")

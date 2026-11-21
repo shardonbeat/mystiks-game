@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://ckj1clm1lww4x"]
+
+[ext_resource type="Script" uid="uid://dde35qw04qavp" path="res://Book/Pages/storage_page.gd" id="1_o00ik"]
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="2_8kv5k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxuob"]
+font = ExtResource("2_8kv5k")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_sau36"]
+font = ExtResource("2_8kv5k")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_qjvpg"]
+font = ExtResource("2_8kv5k")
+
+[node name="StoragePage" type="Control" unique_id=1350375534]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o00ik")
+
+[node name="BookColumns" type="HBoxContainer" parent="." unique_id=110495015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+
+[node name="LeftPage" type="VBoxContainer" parent="BookColumns" unique_id=1218834039]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="BookColumns/LeftPage" unique_id=1722902166]
+layout_mode = 2
+size_flags_vertical = 0
+text = "INVENTARIO"
+label_settings = SubResource("LabelSettings_cxuob")
+horizontal_alignment = 1
+
+[node name="RightPage" type="VBoxContainer" parent="BookColumns" unique_id=1134674196]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BookColumns/RightPage" unique_id=680198166]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="BookColumns/RightPage/VBoxContainer" unique_id=573850696]
+layout_mode = 2
+
+[node name="TotalLabel" type="Label" parent="BookColumns/RightPage/VBoxContainer/Header" unique_id=1842262785]
+layout_mode = 2
+text = "Total: 0"
+label_settings = SubResource("LabelSettings_sau36")
+horizontal_alignment = 2
+
+[node name="EmptyLabel" type="Label" parent="BookColumns/RightPage/VBoxContainer" unique_id=795248340]
+layout_mode = 2
+text = "La bodega esta vacia.
+Pesca desde el barco."
+label_settings = SubResource("LabelSettings_qjvpg")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="BookColumns/RightPage/VBoxContainer" unique_id=1040558569]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BookColumns/RightPage/VBoxContainer" unique_id=1980910482]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="FishList" type="VBoxContainer" parent="BookColumns/RightPage/VBoxContainer/ScrollContainer" unique_id=1329733619]
+layout_mode = 2
+size_flags_horizontal = 3

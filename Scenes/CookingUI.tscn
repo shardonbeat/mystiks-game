@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://8tiioobik4e5"]
+
+[ext_resource type="Script" uid="uid://nwks5na62qgn" path="res://Scenes/cooking_ui.gd" id="1_y0b8a"]
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="2_11exc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qe4n8"]
+font = ExtResource("2_11exc")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_sau36"]
+font = ExtResource("2_11exc")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_11exc"]
+font = ExtResource("2_11exc")
+
+[node name="CookingUI" type="CanvasLayer" unique_id=596474486]
+script = ExtResource("1_y0b8a")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1751976728]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=2139779333]
+custom_minimum_size = Vector2(280, 210)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1041567972]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1931114304]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=411863502]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1263399016]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HORNO"
+label_settings = SubResource("LabelSettings_qe4n8")
+
+[node name="HeatLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1072620110]
+layout_mode = 2
+text = "Calor: 25s"
+label_settings = SubResource("LabelSettings_sau36")
+horizontal_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1705209278]
+layout_mode = 2
+
+[node name="EmptyLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=488561924]
+layout_mode = 2
+size_flags_vertical = 6
+text = "No quedan peces."
+label_settings = SubResource("LabelSettings_11exc")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1309491383]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="FishList" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=720389654]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CloseButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=24057872]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_11exc")
+text = "Cerrar"

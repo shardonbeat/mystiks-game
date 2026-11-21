@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://c6t28tlhlc1is"]
+
+[ext_resource type="Script" uid="uid://nasp246q54hj" path="res://Book/pause_menu.gd" id="1_tu6up"]
+[ext_resource type="Texture2D" uid="uid://dp47cg0582ctk" path="res://Assets/book/Book-Sprite-Sheet.png" id="2_rxjrh"]
+[ext_resource type="Texture2D" uid="uid://cqdvxsctdn4yh" path="res://Assets/book/bookmark-mystik.png" id="3_2qfbo"]
+[ext_resource type="PackedScene" uid="uid://bes3chvht6er" path="res://Book/Pages/options_page.tscn" id="3_a5ld6"]
+[ext_resource type="PackedScene" uid="uid://bhbjcl32fcg6w" path="res://Book/Pages/mystiks_page.tscn" id="3_rxjrh"]
+[ext_resource type="Texture2D" uid="uid://su85077uptc1" path="res://Assets/book/bookmark-options.png" id="4_h4y1v"]
+[ext_resource type="PackedScene" uid="uid://ckj1clm1lww4x" path="res://Book/Pages/storage_page.tscn" id="4_rc3js"]
+[ext_resource type="Texture2D" uid="uid://dv6vqe8uhkxhe" path="res://Assets/book/bookmark-storage.png" id="6_21s74"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emv3i"]
+atlas = ExtResource("2_rxjrh")
+region = Rect2(0, 190, 300, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0w1u"]
+atlas = ExtResource("2_rxjrh")
+region = Rect2(0, 0, 300, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1och7"]
+atlas = ExtResource("2_rxjrh")
+region = Rect2(300, 0, 300, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpi0q"]
+atlas = ExtResource("2_rxjrh")
+region = Rect2(600, 0, 300, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmyb1"]
+atlas = ExtResource("2_rxjrh")
+region = Rect2(900, 0, 300, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myy0f"]
+atlas = ExtResource("2_rxjrh")
+region = Rect2(1200, 0, 300, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjs17"]
+atlas = ExtResource("2_rxjrh")
+region = Rect2(0, 190, 300, 190)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2c35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emv3i")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0w1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1och7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpi0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmyb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myy0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjs17")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 12.0
+}]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1597777902]
+process_mode = 3
+layer = 10
+script = ExtResource("1_tu6up")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1448082391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.12856185, 0.21072292, 0.41568628)
+
+[node name="BookRoot" type="Node2D" parent="." unique_id=50397130]
+position = Vector2(995, 0)
+scale = Vector2(1.169256, 1.169256)
+
+[node name="BookSprite" type="AnimatedSprite2D" parent="BookRoot" unique_id=530061602]
+z_index = 2
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_y2c35")
+animation = &"open"
+frame = 5
+frame_progress = 1.0
+
+[node name="PagesUI" type="Control" parent="BookRoot" unique_id=2057152477]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -447.293
+offset_top = -240.32376
+offset_right = 126.5762
+offset_bottom = 185.58813
+
+[node name="PageContainer" type="MarginContainer" parent="BookRoot/PagesUI" unique_id=276284214]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MystiksPage" parent="BookRoot/PagesUI/PageContainer" unique_id=917958053 instance=ExtResource("3_rxjrh")]
+visible = false
+layout_mode = 2
+
+[node name="StoragePage" parent="BookRoot/PagesUI/PageContainer" unique_id=1019483646 instance=ExtResource("4_rc3js")]
+layout_mode = 2
+
+[node name="OptionsPage" parent="BookRoot/PagesUI/PageContainer" unique_id=891328573 instance=ExtResource("3_a5ld6")]
+visible = false
+layout_mode = 2
+
+[node name="BookMarks" type="VBoxContainer" parent="BookRoot/PagesUI" unique_id=875273666]
+z_index = 1
+layout_mode = 0
+offset_left = 555.05383
+offset_top = 24.0
+offset_right = 1192.0538
+offset_bottom = 401.0
+scale = Vector2(2.894381, 2.894381)
+
+[node name="MystiksBookMark" type="TextureButton" parent="BookRoot/PagesUI/BookMarks" unique_id=1874430375]
+texture_filter = 1
+custom_maximum_size = Vector2(30, -1)
+layout_mode = 2
+texture_normal = ExtResource("3_2qfbo")
+
+[node name="StorageBookMark" type="TextureButton" parent="BookRoot/PagesUI/BookMarks" unique_id=1400922893]
+texture_filter = 1
+custom_maximum_size = Vector2(30, -1)
+layout_mode = 2
+texture_normal = ExtResource("6_21s74")
+
+[node name="OptionsBookMark" type="TextureButton" parent="BookRoot/PagesUI/BookMarks" unique_id=1405481616]
+texture_filter = 1
+custom_maximum_size = Vector2(30, -1)
+layout_mode = 2
+texture_normal = ExtResource("4_h4y1v")

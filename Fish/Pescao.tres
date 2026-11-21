@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="FishType" format=3 uid="uid://bp3leoe3b1xbx"]
 
+[ext_resource type="Texture2D" uid="uid://bd2ts1q1ikf4m" path="res://Assets/fish/happy-koi.png" id="1_m6qe6"]
 [ext_resource type="Script" uid="uid://dgr5yc2gpqj1b" path="res://FishType.gd" id="1_r2euh"]
 
 [resource]
 script = ExtResource("1_r2euh")
-fish_name = "Pescao"
+fish_name = "Happy Koi"
+fish_icon = ExtResource("1_m6qe6")
 base_price = 100
-tint = Color(0.023256682, 0.528895, 0.7891211, 1)
 bite_time_avg = 1.65
 difficulty = 0.2
 metadata/_custom_type_script = "uid://dgr5yc2gpqj1b"

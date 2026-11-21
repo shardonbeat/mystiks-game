@@ -8,5 +8,6 @@ script = ExtResource("1_262io")
 id = "delfino"
 mystik_name = "Delfino"
 icon = ExtResource("1_75olb")
-description = "Un amistoso delfin muy veloz, es muy bueno ayudando a los viajeros en la duracion de sus viajes."
+description = "Un amistoso delfin muy veloz, es muy bueno ayudando a los viajeros "
+nation = 1
 metadata/_custom_type_script = "uid://dxdemk0nndfvu"

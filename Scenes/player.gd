@@ -102,12 +102,10 @@ func _start_fishing() -> void:
 	
 func _on_fishing_finished(success: bool, fish: FishType, value: int):
 	_is_fishing = false
-	
-	if _current_fishing_instance:
-		_current_fishing_instance.queue_free()
-		_current_fishing_instance = null
+	_current_fishing_instance = null
 	
 	if success:
-		print("CAUGHT A FISH.")
+		print("CAUGHT A FISH. Total en bodega: ", GameManager.get_total_fish_count())
+		print(GameManager.caught_fish)
 	else:
 		print("THE FISH GOT AWAY!")

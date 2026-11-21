@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://yoddonddf6jg"]
 
-[ext_resource type="Texture2D" uid="uid://ofum5vh68tfk" path="res://Assets/fish.png" id="1_d5xeh"]
 [ext_resource type="Script" uid="uid://dwlucdlfwcemu" path="res://Scenes/fishing_mini_game.gd" id="1_l4xvc"]
 [ext_resource type="Resource" uid="uid://bp3leoe3b1xbx" path="res://Fish/Pescao.tres" id="2_8pmrs"]
 [ext_resource type="Texture2D" uid="uid://bprp1tuwgdpk3" path="res://Assets/chest.png" id="2_qfikw"]
@@ -90,8 +89,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 35.0
 offset_bottom = 35.0
-texture = ExtResource("1_d5xeh")
-expand_mode = 3
+expand_mode = 1
 
 [node name="ChestIcon" type="TextureRect" parent="Control/CatchArea" unique_id=1190977106]
 visible = false

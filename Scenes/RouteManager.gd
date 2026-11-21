@@ -69,6 +69,7 @@ func _complete_route() -> void:
 			GameManager.discovered_islands.append(arrived_island)
 			
 	GameManager.is_on_route = false
+	is_steering = false
 	GameManager.reset_mystik_route_state()
 	if arrived_island:
 		GameManager.current_island_id = arrived_island.id

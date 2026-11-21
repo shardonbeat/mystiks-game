@@ -11,6 +11,13 @@ extends Node2D
 @export var sink_time: float = 0.15       ## Qué tan rápido se hunde (más alto = más amortiguado)
 @export var recover_time: float = 1.0      ## Qué tan lento vuelve a flotar
 
+@export_group("Horno y Cocina")
+@export var coal_cost: int = 5
+@export var oven_burn_duration: float = 25.0
+@export var cooking_ui_scene: PackedScene
+
+var _oven_heat_left: float = 0.0
+
 @onready var visuals: Node2D = $Visuals
 
 var _time: float = 0.0
@@ -28,6 +35,9 @@ func _process(delta: float) -> void:
 	# 2. Sumamos las olas + el efecto del impacto (sin que se peleen)
 	visuals.position.y = wave_y + _impact_y
 	visuals.rotation = wave_rot + _impact_rot
+	
+	if _oven_heat_left > 0.0:
+		_oven_heat_left = maxf(0.0, _oven_heat_left - delta)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -68,6 +78,49 @@ func _on_helm_interactable_interacted(player: Node2D, option_index: int, option_
 				MainScene.show_map(true)
 		1:
 			MainScene.show_map(false)
+			
+func _on_oven_interactable_interacted(player: Node2D, option_index: int, option_name: String):
+	if GameManager.is_on_event:
+		return
+		
+	match option_index:
+		0:
+			_light_oven()
+		1:
+			_open_cooking_ui(player)
+
+func _light_oven() -> void:
+	if GameManager.coal < coal_cost:
+		print("Carbón insuficiente (necesitas ", coal_cost, ").")
+		_play_board_bounce(0.2, 1.5)
+		return
+		
+	GameManager.modify_resources(-coal_cost, 0, 0, 0)
+	_oven_heat_left = oven_burn_duration
+	_play_board_bounce(-0.15, 2.0)
+
+func _open_cooking_ui(player: Node2D) -> void:
+	if _oven_heat_left <= 0.0:
+		print("El horno está apagado. Prende los carbones primero.")
+		_play_board_bounce(0.2, 1.5)
+		return
+		
+	if GameManager.caught_fish.is_empty():
+		print("No tienes peces en la bodega para cocinar.")
+		return
+		
+	if not cooking_ui_scene:
+		push_warning("Asigna CookingUI.tscn en el Inspector del barco.")
+		return
+		
+	player.set_physics_process(false)
+	var ui := cooking_ui_scene.instantiate()
+	get_tree().current_scene.add_child(ui)
+	ui.setup(self)
+	ui.closed.connect(func():
+		if is_instance_valid(player):
+			player.set_physics_process(true)
+	)
 
 func _play_board_bounce(tilt_ratio: float, target_sink: float) -> void:
 	if _wobble_tween and _wobble_tween.is_valid():

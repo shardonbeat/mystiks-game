@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EventType" format=3 uid="uid://b8gp0ccgvpso4"]
 
-[ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://EventType.gd" id="1_mvr4f"]
-[ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://EventOption.gd" id="1_q8i0k"]
+[ext_resource type="Script" uid="uid://cwb4ime54bdnw" path="res://Scenes/EventType.gd" id="1_mvr4f"]
+[ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://Scenes/EventOption.gd" id="1_q8i0k"]
 [ext_resource type="Resource" uid="uid://cqhvdbmx7ikii" path="res://Events/EventSolvingOptions/ESCAPE.tres" id="2_jb3lh"]
 [ext_resource type="Resource" uid="uid://b5crs1pgs55i1" path="res://Events/EventSolvingOptions/ESCONDERSE.tres" id="3_qfuo7"]
 

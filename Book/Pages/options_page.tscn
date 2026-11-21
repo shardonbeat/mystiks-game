@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://bes3chvht6er"]
+
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="1_sswkk"]
+[ext_resource type="Script" uid="uid://8r8ia6jd4n3r" path="res://Book/Pages/options_page.gd" id="1_xfj45"]
+[ext_resource type="LabelSettings" uid="uid://b34kxp4lyg811" path="res://Assets/labelsSettings/options_label.tres" id="2_htroh"]
+[ext_resource type="Texture2D" uid="uid://l1qqjwbwrs4q" path="res://Assets/tornPapelFrame.png" id="4_c3yd8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxuob"]
+font = ExtResource("1_sswkk")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_viqlm"]
+font = ExtResource("1_sswkk")
+font_size = 45
+font_color = Color(0.50824606, 0.3294733, 0.13585216, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r6vs3"]
+font = ExtResource("1_sswkk")
+font_color = Color(0.17254902, 0.22745098, 0.2627451, 1)
+
+[node name="OptionsPage" type="HBoxContainer" unique_id=1019483646 node_paths=PackedStringArray("option_buttons")]
+offset_right = 548.0
+offset_bottom = 195.0
+script = ExtResource("1_xfj45")
+option_buttons = [NodePath("BookColumns/RightPage/ResumeButton"), NodePath("BookColumns/RightPage/TitleScreenButton"), NodePath("BookColumns/RightPage/QuitButton")]
+
+[node name="BookColumns" type="HBoxContainer" parent="." unique_id=110495015]
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="LeftPage" type="VBoxContainer" parent="BookColumns" unique_id=1218834039]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="BookColumns/LeftPage" unique_id=1722902166]
+layout_mode = 2
+size_flags_vertical = 0
+text = "OPCIONES"
+label_settings = SubResource("LabelSettings_cxuob")
+horizontal_alignment = 1
+
+[node name="MasterLabel" type="Label" parent="BookColumns/LeftPage" unique_id=1111646887]
+layout_mode = 2
+text = "General"
+label_settings = ExtResource("2_htroh")
+
+[node name="MasterSlider" type="HSlider" parent="BookColumns/LeftPage" unique_id=645647285]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="BookColumns/LeftPage" unique_id=353174085]
+layout_mode = 2
+text = "Musica"
+label_settings = ExtResource("2_htroh")
+
+[node name="MusicSlider" type="HSlider" parent="BookColumns/LeftPage" unique_id=747324692]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SfxLabel" type="Label" parent="BookColumns/LeftPage" unique_id=1685382265]
+layout_mode = 2
+text = "Efectos"
+label_settings = ExtResource("2_htroh")
+
+[node name="SfxSlider" type="HSlider" parent="BookColumns/LeftPage" unique_id=387072803]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="FullscreenCheck" type="CheckButton" parent="BookColumns/LeftPage" unique_id=1308038687]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sswkk")
+theme_override_font_sizes/font_size = 25
+text = "Full Screen"
+
+[node name="RightPage" type="VBoxContainer" parent="BookColumns" unique_id=1134674196]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NameLabel" type="Label" parent="BookColumns/RightPage" unique_id=663775429]
+layout_mode = 2
+text = "PARTIDA"
+label_settings = SubResource("LabelSettings_viqlm")
+
+[node name="ResumeButton" type="TextureButton" parent="BookColumns/RightPage" unique_id=1551018502]
+z_index = 20
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture_normal = ExtResource("4_c3yd8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="BookColumns/RightPage/ResumeButton" unique_id=1625945219]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.25
+offset_top = -8.0
+offset_right = 36.25
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reanudar"
+label_settings = SubResource("LabelSettings_r6vs3")
+autowrap_mode = 3
+
+[node name="TitleScreenButton" type="TextureButton" parent="BookColumns/RightPage" unique_id=2086013355]
+z_index = 20
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture_normal = ExtResource("4_c3yd8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="BookColumns/RightPage/TitleScreenButton" unique_id=544920603]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.625
+offset_top = -17.5
+offset_right = 40.625
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu Principal"
+label_settings = SubResource("LabelSettings_r6vs3")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="QuitButton" type="TextureButton" parent="BookColumns/RightPage" unique_id=1015206807]
+z_index = 20
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture_normal = ExtResource("4_c3yd8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="BookColumns/RightPage/QuitButton" unique_id=809848204]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.625
+offset_top = -8.0
+offset_right = 22.625
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Salir"
+label_settings = SubResource("LabelSettings_r6vs3")
+autowrap_mode = 3

@@ -2,8 +2,8 @@ extends Resource
 class_name FishType
 
 @export var fish_name: String
+@export var fish_icon: Texture2D
 @export_range(0, 10000, 1) var base_price: int
-@export var tint: Color
 
 @export var allowed_areas: Array[String]
 @export var requires_rain: bool = false

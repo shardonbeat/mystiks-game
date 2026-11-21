@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_nhjly"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_k0qo1"]
 [ext_resource type="Material" uid="uid://b45cei5o18uam" path="res://shaders/fog_shader.tres" id="6_nhjly"]
-[ext_resource type="PackedScene" uid="uid://de5i6g20raxfg" path="res://bote.tscn" id="8_iws5a"]
+[ext_resource type="PackedScene" uid="uid://de5i6g20raxfg" path="res://Scenes/bote.tscn" id="8_iws5a"]
 [ext_resource type="Texture2D" uid="uid://inw27ljsn0j6" path="res://Assets/bar_under.png" id="9_4t6qg"]
 [ext_resource type="Texture2D" uid="uid://w48m4yhtj6k5" path="res://Assets/bar_progress.png" id="10_13ay6"]
 [ext_resource type="Script" uid="uid://baahqwi3uyxc" path="res://Scenes/route_hud.gd" id="11_quslg"]
@@ -114,8 +114,15 @@ label_settings = SubResource("LabelSettings_qe4n8")
 horizontal_alignment = 1
 
 [node name="MystikHUD" parent="HUD" unique_id=561235731 instance=ExtResource("14_r5gyg")]
-offset_left = 17.0
-offset_top = 10.0
-offset_right = 202.0
-offset_bottom = 90.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = -120.0
+offset_right = -82.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(1.3199997, 1.3199997)

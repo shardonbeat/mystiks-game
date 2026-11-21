@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bhbjcl32fcg6w"]
+
+[ext_resource type="Script" uid="uid://c3smwk3oqnnd5" path="res://Book/Pages/mystiks_page.gd" id="1_cxuob"]
+[ext_resource type="FontFile" uid="uid://t3lega8a2kxs" path="res://Assets/Perfect DOS VGA 437 Win.fnt" id="1_mf6hd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxuob"]
+font = ExtResource("1_mf6hd")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_viqlm"]
+font = ExtResource("1_mf6hd")
+font_size = 15
+font_color = Color(0.50824606, 0.3294733, 0.13585216, 1)
+
+[node name="MystiksPage" type="HBoxContainer" unique_id=1896678976]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+script = ExtResource("1_cxuob")
+
+[node name="BookColumns" type="HBoxContainer" parent="." unique_id=110495015]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 120
+
+[node name="LeftPage" type="VBoxContainer" parent="BookColumns" unique_id=1218834039]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="BookColumns/LeftPage" unique_id=1722902166]
+layout_mode = 2
+size_flags_vertical = 0
+text = "MYSTIKS"
+label_settings = SubResource("LabelSettings_cxuob")
+autowrap_mode = 3
+
+[node name="MystikGrid" type="GridContainer" parent="BookColumns/LeftPage" unique_id=948193665]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="RightPage" type="VBoxContainer" parent="BookColumns" unique_id=1134674196]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="HeaderBox" type="HBoxContainer" parent="BookColumns/RightPage" unique_id=1758247859]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PortraitRect" type="TextureRect" parent="BookColumns/RightPage/HeaderBox" unique_id=2047976624]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="BookColumns/RightPage/HeaderBox" unique_id=663775429]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_viqlm")
+
+[node name="Habilidad" type="Label" parent="BookColumns/RightPage" unique_id=1479934706]
+modulate = Color(1, 1, 1, 0.7882353)
+layout_mode = 2
+text = "Habilidad"
+label_settings = SubResource("LabelSettings_viqlm")
+
+[node name="HabilityLabel" type="Label" parent="BookColumns/RightPage" unique_id=240244758]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_viqlm")
+
+[node name="HSeparator" type="HSeparator" parent="BookColumns/RightPage" unique_id=858990076]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="DescLabel" type="RichTextLabel" parent="BookColumns/RightPage" unique_id=1282705896]
+custom_minimum_size = Vector2(235, 75)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.50980395, 0.32941177, 0.13725491, 0.6431373)
+theme_override_fonts/normal_font = ExtResource("1_mf6hd")
+theme_override_font_sizes/normal_font_size = 15
+
+[node name="EquipButton" type="Button" parent="BookColumns/RightPage" unique_id=75703754]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_mf6hd")
+theme_override_font_sizes/font_size = 25
+text = "Equipar"

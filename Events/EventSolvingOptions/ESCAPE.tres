@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EventOption" format=3 uid="uid://cqhvdbmx7ikii"]
 
-[ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://EventOption.gd" id="1_djqtw"]
+[ext_resource type="Script" uid="uid://errb2xrntg4c" path="res://Scenes/EventOption.gd" id="1_djqtw"]
 
 [resource]
 script = ExtResource("1_djqtw")
